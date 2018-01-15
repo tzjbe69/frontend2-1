@@ -37,7 +37,7 @@ function onHtmlLoaded() {
         movieImdbVotesEl.innerHTML = "IMDB Votes: " + movieModel.imdbVotes;
         movieDirectorEl.innerHTML = "Directors: " + movieModel.director;
         movieActorsEl.innerHTML = "Actors: " + movieModel.actors;
-        movieLanguageEl.innerHTML = "Language " + movieModel.language;
+        movieLanguageEl.innerHTML = "Languages: " + movieModel.language;
         moviePosterEl.setAttribute("src", movieModel.poster);
         moviePosterEl.setAttribute("alt", movieModel.title);
         movieMetascoreEl.innerHTML = "Metascore: " + movieModel.metascore;
