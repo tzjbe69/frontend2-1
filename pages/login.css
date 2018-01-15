@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    margin-bottom: 35px;
+}
+
+form {
+	text-align: center;
+	margin: auto;
+	width: 280px;
+	height: 300px;
+	box-shadow: 0 0 2px;
+}
+
+form input {
+	border-radius: 5px;
+	margin-top: 6.5%;
+}
+
+form button {
+	width: 150px;
+	border: none;
+	background-color: #b81604;
+	color: white;
+	border-radius: 6px;
+	margin-top: 6.5%;
+	cursor: pointer;
+}
+
+form button:hover {
+	opacity: 0.7;
+}

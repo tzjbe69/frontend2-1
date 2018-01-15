@@ -1,5 +1,20 @@
 /*global fetch*/
 window.addEventListener('load', onHTMLLoad);
+
+const pageURL = "https://ancient-caverns-16784.herokuapp.com";
+
+function login(username, password) {
+    return fetch(pageURL + '/auth/login', {
+        method: 'POST',
+        body: 'username=' + username + '&password=' + password,
+        headers: {
+            'Content-type': 'application/x-www-form-urlencoded'
+        }
+    }).then(response => {
+        return response.json();
+    })
+}
+
 //just for testing
 function onHTMLLoad() {
     // These must be on HTMLLoad funcion whenever you need this button
