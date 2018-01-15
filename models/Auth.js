@@ -64,3 +64,42 @@ let getCookies = () => {
     });
     return cookies;
 };
+
+
+
+
+//The user class
+
+
+function User(){
+    this.username = "";
+    this.password = "";
+    this.id = null;
+
+}
+
+//User registration method
+
+User.prototype.registerUser = function(){
+    const pageUrl = "https://ancient-caverns-16784.herokuapp.com";
+
+    fetch(pageUrl + '/auth/register/',{
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: 'username=' + document.getElementById("username").value + '&' + 'password=' + document.getElementById("userpassword").value
+    })
+    .then(data => data.json())
+    .then(data =>  { 
+        console.log("Data este: ");
+        console.log(data);
+        if(data.authenticated){
+            alert("Successfully Registered!"); 
+        } else{
+            alert(data.message);
+        } 
+    })
+     .catch((err) => {
+         // alert ("This is a warning message!");
+        console.error(err);
+    });
+}
