@@ -12,15 +12,37 @@ body {
     margin-bottom: 35px;
 }
 
+.login-notification {
+	border-radius: 8px;
+	margin-top: 5%;
+	padding: 5px;
+	text-align: center;
+}
+
+.login-form {
+	display: flex;
+	justify-content: center;
+}
+
+@media(min-width:320px) {
+	.login-form {
+	margin-top: 3.5%;
+	}
+
+	label {
+		margin-right: 37.5%;
+	}
+}
+
 form {
 	text-align: center;
-	margin: auto;
-	width: 280px;
+	width: 400px;
 	height: 300px;
 	box-shadow: 0 0 2px;
 }
 
 form input {
+	border: 1px solid #6b6a69;
 	border-radius: 5px;
 	margin-top: 6.5%;
 }
