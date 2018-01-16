@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="../models/Auth.js"></script>
+        <script type="text/javascript" src="../utils/utils.js"></script>
+        <script type="text/javascript" src="../views/logout.js"></script>
+        
+    </head>
+    <body>
+        <!--This should be in HTML final document where ever you need logout-->
+        <div><button id="logout">Logout</button><div id="logout-response"></div></div>
+        <!--To here-->
+        
+        <!--These are tests for LOGOUT Button-->
+        <h1>Test the logout</h1>
+        <label for="inpuserSetCookieut">Enter the token</label>
+        <input type="text" name="userSetCookie"/>
+        <button id="set-cookie">Set Cookie</button>
+        <button id="expire-cookie">Expire Cookie</button>
+        <button id="show-logout">Show Logout Button</button>
+        <p>Instructions: 
+        <ol>
+            <li>Click on Show Logout button and read:</li>
+            <li>First try logout simple: Should say you have to be logged in, and hide the button</li>
+            <li>Second obtain a token from Postman, paste in input click on set Cookie and hit logout: Should work as if you were logged in</li>
+            <li>Third obtain another token from Postman, paste in input click on set Cookie, now Click expire cookie(like after an hour) then click Logout: Should say you have to be logged in, and hide the button</li>
+        </ol>
+        After every test click Show logout button: Should show the button and remove the text</p></p>
+        <!--Here is script only for test-->
+        <script>
+            let setCookieBttn = document.getElementById('set-cookie');
+            setCookieBttn.addEventListener('click', () => {
+                let getCookieFromUser = document.querySelector('input');
+                document.cookie = "accessCookie=" + getCookieFromUser.value;
+            });
+            document.getElementById('expire-cookie').addEventListener('click', () => document.cookie = "accessCookie="+ getCookies.accessCookie + "; expires=Thu, 01 Jan 1970 00:00:01 GMT;")
+            document.getElementById('show-logout').addEventListener('click', () => {
+                document.getElementById('logout').style.display = 'block' 
+                document.getElementById('logout-response').innerHTML = ""
+            })
+        </script>
+    </body>
+</html>
