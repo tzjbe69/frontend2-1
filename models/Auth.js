@@ -55,4 +55,3 @@ User.prototype.logOutFunction = function(){
     .then((response) => this.message = response.message)
     .catch((err) => console.log('Unidentified error: ' + err));
 };
-
