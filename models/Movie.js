@@ -66,7 +66,7 @@ Movie.prototype.getMovieDetails = function() {
             that.production=data.Production;
             that.website=data.Website;
             that.response=data.Response;
-    })
+    });
 }
 
 Movie.prototype.editMovie = function(data, token, user) {
@@ -87,7 +87,7 @@ Movie.prototype.editMovie = function(data, token, user) {
             "x-auth-token:": token
         },
         body: JSON.stringify(data)
-    })
+    });
 }
 
 function role(user) {
