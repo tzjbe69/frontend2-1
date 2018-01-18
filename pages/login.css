@@ -15,6 +15,7 @@ body {
 .login-notification {
 	border-radius: 8px;
 	margin-top: 5%;
+	margin-bottom: 34%;
 	padding: 5px;
 	text-align: center;
 }
@@ -22,11 +23,13 @@ body {
 .login-form {
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
+	align-items: center;
 }
 
 @media(min-width:320px) {
-	.login-form {
-	margin-top: 3.5%;
+	form {
+		width: 290px;
 	}
 
 	label {
@@ -35,8 +38,11 @@ body {
 }
 
 form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	text-align: center;
-	width: 400px;
 	height: 300px;
 	box-shadow: 0 0 2px;
 }
@@ -44,16 +50,19 @@ form {
 form input {
 	border: 1px solid #6b6a69;
 	border-radius: 5px;
-	margin-top: 6.5%;
+	width: 55%;
+}
+
+form label {
+	margin-bottom: -5%;
 }
 
 form button {
 	width: 150px;
 	border: none;
+    border-radius: 15px;
 	background-color: #b81604;
 	color: white;
-	border-radius: 6px;
-	margin-top: 6.5%;
 	cursor: pointer;
 }
 
