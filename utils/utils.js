@@ -11,4 +11,16 @@ let getCookies = () => {
     return cookies;
 };
 
-let isAuth = () => getCookies().accessCookie !== undefined ? true : false
+let isAuth = () => {
+    const buttonLogOut = document.getElementById('logout');
+    const buttonLogIn = document.getElementsByClassName('signin')[0];
+    const accessCookie = getCookies().accessCookie;
+    if (accessCookie !== undefined) {
+        buttonLogOut.style.display = 'inline-block';
+        buttonLogIn.style.display = 'none';
+    } else {
+        buttonLogOut.style.display = 'none';
+        buttonLogIn.style.display = 'inline-block';
+    }
+    return accessCookie !== undefined ? true : false;
+};

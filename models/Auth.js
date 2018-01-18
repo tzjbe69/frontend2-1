@@ -26,7 +26,7 @@ User.prototype.registerUser = function(event){
             alert("Successfully Registered!"); 
         } else{
             alert(data.message);
-        } 
+        }
     })
      .catch((err) => {
          // alert ("This is a warning message!");

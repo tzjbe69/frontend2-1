@@ -11,7 +11,7 @@ window.onload = function() {
             .then(response => {
             	if(response.authenticated === true) {
                 	document.cookie = 'accessCookie=' + response.accessToken;
-                	document.location.href = "test.html";
+                	document.location.href = "home.html";
             	}
             })
     })

@@ -1,0 +1,96 @@
+.art-container {
+    border-bottom: double #104D02 ;
+    padding: 10;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    background-color: #3C5B35;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-family: verdana;
+    font-size: 12px;
+    height: 35px;
+}
+
+.container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: inherit;
+    margin: auto;
+    max-width: 1115px;
+    position: relative;
+}
+
+input {
+    border-color: #57824D;
+    border-width: 2px;
+    border-radius: 15px;
+    border-style: ridge;
+    font-family: verdana;
+    font-size: 14px;
+    height: 35px;
+}
+
+.logo {
+    height: 70px;
+    padding-right: 590px;
+    width: 220px;
+}
+
+.list-container {
+    background-color: white;
+    border-left: ridge black;
+    border-right: ridge black;
+    box-shadow: 2px 2px 2px black;
+    height: 100%;
+    margin: auto;
+    margin-top: 100px;
+    width: 1100px;
+}
+
+.header {
+    background-color: #C0C0C0;
+    box-shadow: 2px 2px 2px black;
+    height:100px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.search {
+    padding-top: 35px;
+}
+
+#pagination { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pagination p {
+    margin: 0 5px;
+    font-size: 13px;
+}
+
+#prev-page, #next-page {
+    background-color: #3C5B35;
+    color: white;
+    padding: 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    text-align: center
+}
+
+#prev-page:hover, #next-page:hover, button:hover{
+    cursor: pointer;
+    opacity: 0.8
+}
