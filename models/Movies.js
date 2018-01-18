@@ -5,6 +5,7 @@ function Movies() {
     this.numberOfPages = 0;
     this.links = {};
     this.movies = [];
+    this.poster=null;
 }
 
 Movies.prototype.getAllMovies = function() {

@@ -24,3 +24,21 @@ let isAuth = () => {
     }
     return accessCookie !== undefined ? true : false;
 };
+
+function getMovieIdFromURL() {
+    // This is for the case we have multiple variables in URL
+    var query = window.location.search.substring(1).split('&');
+    for (var i = 0; i < query.length; i++) {
+        var queryTemp = query[i].split('=');
+        // if is the one wee need just returns the value
+        if(queryTemp[0] === 'movieId') {
+            return queryTemp[1];
+        } else {
+            //this is just in case we do not find the value, returs the first article
+            //I set this not to crash...
+            alert("MovieId is invalid! You will be redirected");
+            window.location.href = "home.html";
+            //return 1;
+        }
+    }
+}
