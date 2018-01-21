@@ -19,16 +19,7 @@ User.prototype.registerUser = function(event){
         body: 'username=' + this.username + '&' + 'password=' + this.password
     })
     .then(data => data.json())
-    .then(data =>  { 
-        console.log("Data este: ");
-        console.log(data);
-        if(data.authenticated){
-            alert("Successfully Registered!"); 
-        } else{
-            alert(data.message);
-        }
-    })
-     .catch((err) => {
+    .catch((err) => {
          // alert ("This is a warning message!");
         console.error(err);
     });
