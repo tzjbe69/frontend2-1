@@ -5,6 +5,7 @@ window.onload = function() {
     const usernameInput = document.getElementsByTagName('input')[0];
     const passwordInput = document.getElementsByTagName('input')[1];
     const loginNotif = document.querySelector('.login-notification');
+    const loginForm = document.querySelector('.login-form');
 
     submitBtn.addEventListener('click', (event) => {
     	event.preventDefault();
@@ -19,14 +20,19 @@ window.onload = function() {
             	if(response.authenticated) {
                 	document.cookie = 'accessCookie=' + response.accessToken;
                     document.cookie = "username=" + userLogin.username;
-                    loginNotif.innerHTML = "<h4>Login Successful, young Padawan " + userLogin.username + "</h4>";
+                    loginNotif.innerHTML = "<h5>Login Successful, young Padawan " + userLogin.username + ". You will now" + 
+                    " be redirect to the Home Page.</h5>";
                     loginNotif.style.backgroundColor = "#07b001";
+                    loginNotif.style.marginTop = "25%";
+                    loginForm.style.marginTop = "25%";
                 	setTimeout(() => {document.location.href = "home.html"}, 3000);
             	}
                 else {
-                    loginNotif.innerHTML = "<h4>Your username/password is incorrect.</h4>";
+                    loginNotif.innerHTML = "<h5>Your username/password is incorrect.</h5>";
                     loginNotif.style.backgroundColor = "#ba1a14";
-                    loginNotif.style.marginBottom = "12%";
+                    console.log(loginNotif.marginTop);
+                    loginNotif.style.marginTop = "25%";
+                    loginForm.style.marginTop = "25%";
                 }
             });
     });
