@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>register page</title>
-        <link rel="stylesheet" href="register.css">
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="../models/Auth.js"></script>
-        <script type="text/javascript" src="../views/auth.js"></script>
-    </head>
-    <body>
-            <div class="container">
-                <h2>Create account</h2>
-                <form>
-                    <p>Your name</p>
-                    <input type="text" id="username" name="name" value="">
-                    <p>Email</p>
-                    <input type="text" id="email" name="mail"  value="">
-                    <p>Password</p>
-                    <input id="userpassword" type="password"  value="">
-                    <p>Re-enter password</p>
-                    <input id="confirm-password" type="password">
-                    <input id="submit" type="button" value="Submit">
-                </form>
-                <p>Already have an account?</p>
-                <a href="#">Sing in</a>
-            </div>
-    </body>
+
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="register.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../models/Auth.js"></script>
+    <script type="text/javascript" src="../views/register.js"></script>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-md-12 validation-error">
+            <h4>this is an error</h4>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Create account</h2>
+        <form>
+            <p>Your username</p>
+            <input type="text" id="username" name="username">
+            <!-- <p>Email</p>
+                    <input type="text" id="email" name="mail"  value=""> -->
+            <p>Password</p>
+            <input id="userpassword" name="password" type="password">
+            <p>Re-enter password</p>
+            <input id="confirm-password" name="password2" type="password">
+            <input id="submit" type="button" value="Submit">
+        </form>
+        <p>Already have an account?</p>
+        <a href="#">Sign in</a>
+    </div>
+</body>
+
 </html>

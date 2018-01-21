@@ -4,7 +4,7 @@
     
     
     
-body{
+body {
     background: #f3f7f9;
     font-family: "Open Sans",sans-serif;;
 	margin: 0;
@@ -17,21 +17,21 @@ body{
     background-color: #C4F0F1;
     padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
-    height: 520px;
+    height: 420px;
     padding-left: 30px;
     width:350px;
     margin:auto;
 }
 
-.container input{
+.container input {
     border-radius:5px;
 }
-.container p{
+.container p {
 	margin-top: 5px;
 	margin-bottom: 0;
 }
 
-.container h2{
+.container h2 {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }

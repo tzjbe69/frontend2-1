@@ -17,7 +17,7 @@ function Movie() {
     this.country="";
     this.awards="";
     this.imdbRating="";
-    this.poster="";
+    this.poster=null;
     this.metascore="";
     this.imdbRating="";
     this.imdbVotes="";
@@ -32,10 +32,12 @@ function Movie() {
 
 Movie.prototype.getMovieDetails = function() {
     var that = this;
-
-    var root = 'https://ancient-caverns-16784.herokuapp.com/';
+    var movieId = getMovieIdFromURL();
+    console.log(movieId);
+    console.log(getMovieIdFromURL);
+    var root = 'https://ancient-caverns-16784.herokuapp.com/movies/';
     
-    return fetch(root + 'movies/59ef6bf8d6d2a00c47176329', {
+    return fetch(root + movieId, {
      method: 'GET'
     })
     .then(function(response){
