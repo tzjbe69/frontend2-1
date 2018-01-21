@@ -1,4 +1,5 @@
 /*global Movie fetch*/
+/*global getCookies*/
 
 function Movie() {
     this.id=null;
@@ -84,7 +85,7 @@ Movie.prototype.editMovie = function(data, token, user) {
         method: 'PUT',
         headers: {
             // Do not know who is token yet
-            "x-auth-token:": token
+            "x-auth-token:": getCookies().accessCookie
         },
         body: JSON.stringify(data)
     });
