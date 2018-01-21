@@ -13,22 +13,57 @@ let getCookies = () => {
     return cookies;
 };
 
-let isAuth = () => {
-    const buttonLogOut = document.getElementById('logout');
-    const buttonLogIn = document.getElementsByClassName('signin')[0];
+// let isAuth = () => {
+//     const buttonLogOut = document.getElementById('logout');
+//     const buttonLogIn = document.getElementsByClassName('signin')[0];
+//     const accessCookie = getCookies().accessCookie;
+//     if (accessCookie !== undefined) {
+//         buttonLogOut.style.display = 'inline-block';
+//         buttonLogIn.style.display = 'none';
+//         //buttonEdit.style.display = 'inline-block';
+//         return true;
+//     } else {
+//         buttonLogOut.style.display = 'none';
+//         buttonLogIn.style.display = 'inline-block';
+//         //buttonEdit.style.display = 'none';
+//         return false;
+//     }
+// };
+
+function isAuth() {
     const accessCookie = getCookies().accessCookie;
-    if (accessCookie !== undefined) {
-        buttonLogOut.style.display = 'inline-block';
-        buttonLogIn.style.display = 'none';
-        buttonEdit.style.display = 'inline-block';
+
+    if(accessCookie !== undefined) {
         return true;
     } else {
-        buttonLogOut.style.display = 'none';
-        buttonLogIn.style.display = 'inline-block';
-        buttonEdit.style.display = 'none';
         return false;
     }
-};
+}
+
+// Function to show an element and display another
+
+function hideOrDisplay(userElement, adminElement) {
+    if (isAuth()) { // if authentication is passed // 
+        if (adminElement === undefined) { // if adminElement parameter is not provided
+            userElement.style.display = "none"; // hide userElement
+            return;
+        } else { // if adminElement parameter is provided
+            userElement.style.display = "none"; // hide userElement
+            adminElement.style.display = "inline-block"; // display adminElement
+            return;
+        }
+    } else { // if authentication is failed
+        if (adminElement === undefined) { // if adminElement parameter is not provided
+            userElement.style.display = "inline-block"; // display userElement
+            return;
+        }
+        else { // if adminElement parameter is provided
+            userElement.style.display = "inline-block"; // display userElement
+            adminElement.style.display = "none"; // hide adminElement
+            return;
+        }
+    }
+}
 
 function getMovieIdFromURL() {
     // This is for the case we have multiple variables in URL

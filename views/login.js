@@ -21,7 +21,7 @@ window.onload = function() {
                 	document.cookie = 'accessCookie=' + response.accessToken;
                     document.cookie = "username=" + userLogin.username;
                     loginNotif.innerHTML = "<h5>Login Successful, young Padawan " + userLogin.username + ". You will now" + 
-                    " be redirect to the Home Page.</h5>";
+                    " be redirected to the Home Page.</h5>";
                     loginNotif.style.backgroundColor = "#07b001";
                     loginNotif.style.marginTop = "25%";
                     loginForm.style.marginTop = "25%";
@@ -30,7 +30,6 @@ window.onload = function() {
                 else {
                     loginNotif.innerHTML = "<h5>Your username/password is incorrect.</h5>";
                     loginNotif.style.backgroundColor = "#ba1a14";
-                    console.log(loginNotif.marginTop);
                     loginNotif.style.marginTop = "25%";
                     loginForm.style.marginTop = "25%";
                 }

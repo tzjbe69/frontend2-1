@@ -5,12 +5,28 @@
 window.onload = function() {
     const buttonLogOut = document.getElementById('logout');
     const buttonLogIn = document.getElementsByClassName('signin')[0];
+    const registerText = document.querySelector('.register-text');
+
     // Put on click on the buttons
     buttonLogIn.addEventListener('click', () => window.location.href = "login.html");
     buttonLogOut.addEventListener('click', logOutFunction);
-    isAuth();
+
+    // if(isAuth()) {
+    //     buttonLogIn.style.display = "none";
+    //     buttonLogOut.style.display = "inline-block";
+    //     registerText.style.display = "none";
+    // } else {
+    //     buttonLogIn.style.display = "inline-block";
+    //     buttonLogOut.style.display = "none";
+    //     registerText.style.display = "inline-block";
+    // }
+
+    hideOrDisplay(registerText);
+    hideOrDisplay(buttonLogIn, buttonLogOut);
+
     let moviesList = new Movies();
     moviesList.moviesURL = 'https://ancient-caverns-16784.herokuapp.com/movies';
+
     moviesList.getAllMovies()
         .then(makePagination)
         .then(displayMovies);
@@ -24,6 +40,7 @@ function makePagination(moviesArray) {
     thisPage.innerHTML = moviesArray.pagination.currentPage + " out of " + moviesArray.pagination.numberOfPages;
     prevPage.addEventListener('click', jumpPrevious);
     nextPage.addEventListener('click', jumpNext);
+
     function jumpNext() {
         if(moviesArray.pagination.links.next != null) {
             nextPage.removeEventListener('click', jumpNext);
