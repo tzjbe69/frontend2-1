@@ -1,3 +1,5 @@
+/*global buttonEdit */
+
 let getCookies = () => {
     const cookiesString = document.cookie;
     const cookiesArray = cookiesString.split('; ');
@@ -18,11 +20,14 @@ let isAuth = () => {
     if (accessCookie !== undefined) {
         buttonLogOut.style.display = 'inline-block';
         buttonLogIn.style.display = 'none';
+        buttonEdit.style.display = 'inline-block';
+        return true;
     } else {
         buttonLogOut.style.display = 'none';
         buttonLogIn.style.display = 'inline-block';
+        buttonEdit.style.display = 'none';
+        return false;
     }
-    return accessCookie !== undefined ? true : false;
 };
 
 function getMovieIdFromURL() {
