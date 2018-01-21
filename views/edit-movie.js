@@ -42,6 +42,8 @@ window.onload = function() {
       const movie = new Movie();
       const token = getCookies().accessCookie;
       const user = new User();
+      
+      console.log("token is ---> ", token);
 
       movie.editMovie(data, token, user);
 }

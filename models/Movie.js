@@ -1,5 +1,6 @@
 /*global Movie fetch*/
 /*global getCookies*/
+/*global isAuth*/
 
 function Movie() {
     this.id=null;
@@ -75,7 +76,7 @@ Movie.prototype.getMovieDetails = function() {
 Movie.prototype.editMovie = function(data, token, user) {
     const root = 'https://ancient-caverns-16784.herokuapp.com/';
 
-    if (role(user) !== "admin") {
+    if (!isAuth()) {
         // do nothing if user is not admin
         return;
         // or throw an error
@@ -87,13 +88,8 @@ Movie.prototype.editMovie = function(data, token, user) {
         method: 'PUT',
         headers: {
             // Do not know who is token yet
-            "x-auth-token:": getCookies().accessCookie
+            "x-auth-token:": token
         },
         body: JSON.stringify(data)
     });
-}
-
-function role(user) {
-    // TODO: Handle user role here
-    return user.role;
 }
