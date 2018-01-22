@@ -69,21 +69,31 @@ function moveTo(page) {
 function displayMovies(moviesList) {
     let articleElement = document.getElementsByClassName('article');
     articleElement[0].innerHTML = "";
-   for (let i = 0; i<moviesList.length; i++) {
+    for (let i = 0; i<moviesList.length; i++) {
         
-        let imageElement = document.createElement('img');
+        let anchorTitleEl = document.createElement('a');
+        let anchorImageEl = document.createElement('a');
+        
         let titleElement = document.createElement('h3');
+        let imageElement = document.createElement('img');
+
+        let url = document.location.href.replace("home.html","movieDetails.html?movieId=") + moviesList[i]._id;
         
+        anchorTitleEl.setAttribute('href', url);
+        anchorTitleEl.setAttribute('target', '_blank');
+        
+        anchorImageEl.setAttribute('href', url);
+        anchorImageEl.setAttribute('target', '_blank');
+        
+        titleElement.innerHTML = moviesList[i].Title;
         imageElement.setAttribute('src', moviesList[i].Poster);
         imageElement.setAttribute('alt', 'No poster Available');
-        imageElement.setAttribute('width', 215);
-        imageElement.setAttribute('height', 315);
-        titleElement.innerHTML = moviesList[i].Title;
-        titleElement.addEventListener('click', () => document.location.href = "movieDetails.html?movieId=" + moviesList[i]._id);
-        imageElement.addEventListener('click', () => document.location.href = "movieDetails.html?movieId=" + moviesList[i]._id);
         
-        articleElement[0].appendChild(imageElement);
-        articleElement[0].appendChild(titleElement);
+        anchorTitleEl.appendChild(titleElement);
+        anchorImageEl.appendChild(imageElement);
+
+        articleElement[0].appendChild(anchorTitleEl);
+        articleElement[0].appendChild(anchorImageEl);
     }
 
 }
