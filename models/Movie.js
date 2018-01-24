@@ -73,8 +73,10 @@ Movie.prototype.getMovieDetails = function() {
     });
 }
 
-Movie.prototype.editMovie = function(data, token, user) {
+Movie.prototype.editMovie = function(data, token) {
     const root = 'https://ancient-caverns-16784.herokuapp.com/';
+    var movieId = getMovieIdFromURL();
+    console.log(movieId);
 
     if (!isAuth()) {
         // do nothing if user is not admin
@@ -83,11 +85,11 @@ Movie.prototype.editMovie = function(data, token, user) {
         //throw new Error("Authorization error!");
     }
 
-    // Seing the token is hardcoded - normally this will change ... ?
-    return fetch(root + 'movies/59ef6bf8d6d2a00c47176329', {
+    console.log("request url ... ", root + 'movies/' + movieId);
+
+    return fetch(root + 'movies/' + movieId, {
         method: 'PUT',
         headers: {
-            // Do not know who is token yet
             "x-auth-token:": token
         },
         body: JSON.stringify(data)
