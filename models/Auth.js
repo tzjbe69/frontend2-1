@@ -12,17 +12,14 @@ function User(){
     this.message ="";
 }
 
-User.prototype.registerUser = function(event){
-    fetch(pageURL + 'register/',{
+User.prototype.register = function(event){
+    return fetch(pageURL + 'register/',{
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: 'username=' + this.username + '&' + 'password=' + this.password
     })
     .then(data => data.json())
-    .catch((err) => {
-         // alert ("This is a warning message!");
-        console.error(err);
-    });
+    .catch((err) => console.log('Registration error: ' + err));
 };
 
 User.prototype.login = function() {

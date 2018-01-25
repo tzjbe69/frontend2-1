@@ -1,145 +1,128 @@
-
 $(document).ready(function(){
 
 	//call the registration process
-	const submitBtn = document.getElementById('submit');
-	const usernameInput = document.getElementById('username');
-	const passwordInput = document.getElementById('userpassword');
-	const passwordInput_2 = document.getElementById('confirm-password');
-	const registerNotif = document.querySelector('.register-notification');
+	document.getElementById("submit").onclick = registerFormValidation;
+	
+	//define errors array
+	let errors = [];
+	//validate the fields before registration
+	function registerFormValidation(){
+		
+		let userNameValue = document.getElementById('username').value;
+		let userName = userNameValue.toLowerCase();
+		const userPassword = document.getElementById('userpassword').value;
 
-	submitBtn.addEventListener('click', (event) => {
-		event.preventDefault();
-		const usernameValue = usernameInput.value;
-		const passwordValue = passwordInput.value;
-		const passwordValue_2 = passwordInput_2.value;
+		//clear the errors array and remove the error class from the filds
+		errors.length = 0;
+		document.getElementById("errors").innerHTML = "";
+		document.getElementById("username").classList.remove("error");
+		document.getElementById("userpassword").classList.remove("error");
 
 
-		// Validate the inputs
+		console.log(userName);
+		console.log(userPassword);
 
-		if (validateEmptyInputs(usernameInput, passwordInput, passwordInput_2) 
-			&& validateInput(usernameInput)
-			&& validateForSymbols(usernameInput) 
-			&& validateInput(passwordInput)) {
-			if(validatePasswords(passwordInput, passwordInput_2) && validateSimilarity(usernameInput, passwordInput)) {
-				register(usernameValue, passwordValue); // If validations are passed, register the user
+
+		// check for empty fields
+		if (userName == "") {
+			stockError("please complete the username field", "username");
+		}
+
+		if (userPassword == "") {
+			stockError("please complete the password field", "userpassword");
+		} 
+
+		//check if username has empty spaces
+		if (/\s/.test(userName) ){
+			stockError("username must not contain empty spaces", "username");
+		} 
+
+		//check if password has empty spaces
+		if (/\s/.test(userPassword) ){
+			stockError("password must not contain empty spacess", "userpassword");
+		} 
+
+		//check if username is not longer than 15 chars
+		if ((userName.length > 15) || (userName.length < 6)){
+			stockError("username too long or too short (max 15 chars, min 6)", "username");
+		} 
+
+		//check if passqord is not shorter than 6 chars
+		if (userPassword.length < 6){
+			stockError("short password (min 6)", "userpassword");
+		} 
+
+
+		// decide: proceed to register or show errors
+		if (errors.length == 0){
+			register(userName,userPassword);
+			
+		} else {
+			console.log(errors);
+			//display the errors-box
+			document.getElementById("errors").classList.add("visible");
+
+			for (var i = errors.length - 1; i >= 0; i--) {
+				console.log(errors[i].message);
+				if (errors[i].field == "username") {
+					document.getElementById("username").classList.add("error");
+				} else {
+					document.getElementById("username").classList.remove("error");
+				}
+				if (errors[i].field == "userpassword") {
+					document.getElementById("userpassword").classList.add("error");
+				} else {
+					document.getElementById("userpassword").classList.remove("error");
+				}
+
+				//display error messages
+				document.getElementById("errors").innerHTML += "- " + errors[i].message + "<br>";
 			}
 		}
-	});
+	}
 
-	function register(userValue, passValue){ // function to register the user
-		const userModel = new User(); // create a user instance using the values gathered from the inputs
-		userModel.username = userValue;
-		userModel.password = passValue;
-		console.log(userModel)
-		registerNotif.innerHTML = "<h4>You are successfuly registered " + userValue + 
-		"-meister. You will now be redirect to the Home Page.</h4>";
-		registerNotif.style.backgroundColor = "#07b001";
-		userModel.registerUser(); // use the "registerUser()" method on the instance created
-		setTimeout(() => {document.location.href = "home.html"}, 4000);
+
+	// catch and use message and field values to build the errors object
+	function stockError(message, field) {
+		let error = {};
+		error.message = message;
+		error.field = field;
+		
+		errors.push(error);
+	}
+	
+	//registration (validation successfull)
+	function register(username,userpassword){
+		var userRegister = new User();
+		userRegister.username = username;
+		userRegister.password = userpassword;
+
+		userRegister.register()
+		.then(data => {
+	        if(data.authenticated){
+	            document.getElementById("registration-form").classList.add("invisible");
+        		document.getElementById("errors").classList.add("invisible");
+        		document.getElementById("success").classList.add("visible");
+        		document.getElementById("errors").classList.remove("visible");
+        		document.getElementById("errors").classList.add("invisible");
+        		document.getElementById("go-to-login").classList.add("visible");
+        		document.getElementById("success").innerHTML = "Successfully registered!";
+	        } else{
+	            document.getElementById("errors").classList.add("visible");
+	            document.getElementById("errors").innerHTML = data.message;
+	        }
+	    });
+	}
+
+	// show password
+	document.getElementById("showpassword").onclick = showPassword;
+	function showPassword() {
+    	const inputPassword = document.getElementById("userpassword");
+
+	    if ( inputPassword.type === "password") {
+	        inputPassword.type = "text";
+	    } else {
+	        inputPassword.type = "password";
+	    }
 	}
 });
-
-function validateForSymbols(input) { // Validation function to check for symbols in the input
-	const registerNotif = document.querySelector('.register-notification');
-	if (/^[a-zA-Z0-9]*$/.test(input.value) === false) { // RegExp to check if value contains non-alphanumeric characters
-		input.style.border = '2px solid red';
-        registerNotif.innerHTML = "<h4>Your username must only contain alphanumeric characters.</h4>";
-        registerNotif.style.backgroundColor = "#ba1a14"
-        return false;	
-		} else {
-		input.style.border = '1px solid #ccc';
-    	registerNotif.innerHTML = "<h4></h4>"
-    	return true;
-		}
-}
-
-function validateInput(inputType) { // Validation function on a single input
-	const registerNotif = document.querySelector('.register-notification');
-    if (inputType.value.length < 6) { // Fail the validation if the length of the value is less than 6 characters
-        inputType.style.border = '2px solid red';
-        registerNotif.innerHTML = "<h4>Your " + inputType.name + " must be at least 6 characters long.</h4>";
-        registerNotif.style.backgroundColor = "#ba1a14"
-        return false;
-    } else if (inputType.value.length > 14){ // Fail the validation if the length of the value is more than 14 characters
-        inputType.style.border = '2px solid red';
-        registerNotif.innerHTML = "<h4>Your " + inputType.name + " is too long (must be less than 14 characters).</h4>";
-        registerNotif.style.backgroundColor = "#ba1a14"
-        return false;
-    }
-    else {
-    	inputType.style.border = '1px solid #ccc'; // Pass the validation if the above requirements are passed
-    	registerNotif.innerHTML = "<h4></h4>"
-    	return true;
-    }
-}
-
-function validateEmptyInputs(input1, input2, input3) { // Validation function for empty inputs (NEEDS ENHANCING)
-	const registerNotif = document.querySelector('.register-notification');
-    if (input1.value === "" && input2.value === "" && input3.value === "") { // Fail the validation if both inputs are empty
-        input1.style.border = '2px solid red';
-        input2.style.border = '2px solid red';
-        input3.style.border = '2px solid red';
-        registerNotif.innerHTML = "<h4>You can not have blank inputs.</h4>";
-        registerNotif.style.backgroundColor = "#ba1a14"
-        return false;
-    } else if (input1.value === "") { // Fail the validation if the first input is empty
-        input1.style.border = '2px solid red';
-        input2.style.border = '1px solid #ccc';
-        registerNotif.innerHTML = "<h4>You can not have blank inputs.</h4>";
-        registerNotif.style.backgroundColor = "#ba1a14"
-        return false;
-    } else if (input2.value === "") { // Fail the validation if the second input are empty
-        input2.style.border = '2px solid red';
-        input1.style.border = '1px solid #ccc';
-        registerNotif.innerHTML = "<h4>You can not have blank inputs.</h4>";
-        registerNotif.style.backgroundColor = "#ba1a14"
-        return false;
-    } else if (input3.value === "") { // Fail the validation if the third input are empty
-    	input3.style.border = '2px solid red';
-        input2.style.border = '1px solid #ccc';
-        input1.style.border = '1px solid #ccc';
-        registerNotif.innerHTML = "<h4>You can not have blank inputs.</h4>";
-        registerNotif.style.backgroundColor = "#ba1a14"
-        return false;
-    } 
-    else { // Pass the validation if both inputs have characters in them
-    	input1.style.border = '1px solid #ccc';
-        input2.style.border = '1px solid #ccc';
-        input3.style.border = '1px solid #ccc';
-        registerNotif.innerHTML = "<h4></h4>";
-        return true;
-    }
-}
-
-function validatePasswords(pass1, pass2) { // Validation of the password inputs
-	const registerNotif = document.querySelector('.register-notification');
-	if (pass1.value !== pass2.value) { // Fail validation if the passwords do not match
-		pass1.style.border = '2px solid red';
-		pass2.style.border = '2px solid red';
-		registerNotif.innerHTML = "<h4>Your passwords must match</h4>";
-		return false;
-	}
-	else {
-		pass1.style.border = '1px solid #ccc';
-		pass2.style.border = '1px solid #ccc';
-    	registerNotif.innerHTML = "<h4></h4>"
-    	return true;
-	} // Password confirmation validation function
-}
-
-function validateSimilarity (username, password) { // Validation of username and password similarity
-	const registerNotif = document.querySelector('.register-notification');
-	if (username.value === password.value) { // Fail the validation if the username and password are the same
-		username.style.border = '2px solid red';
-		password.style.border = '2px solid red';
-		registerNotif.innerHTML = "<h4>Your username and password must not be identical.</h4>";
-		return false;
-	}
-	else {
-		username.style.border = '1px solid #ccc';
-		password.style.border = '1px solid #ccc';
-		registerNotif.innerHTML = "<h4></h4>"
-		return true;
-	}
-}

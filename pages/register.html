@@ -1,40 +1,29 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <title>Register</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link rel="stylesheet" href="register.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="../models/Auth.js"></script>
-    <script type="text/javascript" src="../views/register.js"></script>
-</head>
-
-<body>
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6 register-notification">
-            <h4></h4>
+    <head>
+        <title>Registration page</title>
+        <link rel="stylesheet" href="register.css">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="../models/Auth.js"></script>
+        <script type="text/javascript" src="../views/register.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Create account</h2>
+            <div id="success" class="success-box"></div>
+            <p id="go-to-login" class="invisible">Go to <a href="login.html">Log-in page</a></p> 
+            <div id="registration-form">
+                <form >
+                    <p>Your name</p>
+                    <input type="text" id="username" name="name" value="" pattern="[a-z]{1,15}" required>
+                    <p>Password</p>
+                    <input id="userpassword" type="password"  value="" required="">
+                    <input id="showpassword" type="checkbox">Show Password
+                    <input id="submit" type="button" value="Submit">
+                </form>
+                <p>Already have an account?  <a href="login.html">Log in</a> </p>  
+            </div>
+            <div id="errors" class="errors-box"></div>
         </div>
-        <div class="col-md-3"></div>
-    </div>
-    <div class="container">
-        <h2>Create account</h2>
-        <form>
-            <p>Your username</p>
-            <input type="text" id="username" name="username">
-            <!-- <p>Email</p>
-                    <input type="text" id="email" name="mail"  value=""> -->
-            <p>Password</p>
-            <input id="userpassword" name="password" type="password">
-            <p>Re-enter password</p>
-            <input id="confirm-password" name="password2" type="password">
-            <input id="submit" type="button" value="Submit">
-        </form>
-        <p>Already have an account?</p>
-        <a href="#">Sign in</a>
-    </div>
-</body>
-
+    </body>
 </html>
