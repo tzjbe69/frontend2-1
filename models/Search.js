@@ -1,4 +1,4 @@
-/* global $ */
+/* global $ fetch*/
 function Search(){
   this.title="";
   this.year = null;
@@ -12,20 +12,34 @@ function Search(){
   this.imdbID=null;
   this.type="";
   this.search="";
+  
 }
 
 Search.prototype.searchMovies = function(){
+  const that = this;
+  const searchURL= "https://ancient-caverns-16784.herokuapp.com/movies?Title=" + this.title;
   
-  var searchURL= "https://ancient-caverns-16784.herokuapp.com/movies?Title=" + this.title;
-
-  return $.ajax(searchURL,{
-      method: 'GET',
-      success: response => {
+  return fetch (searchURL, {
+    method: "GET"
+  }).then(function(response){
         console.log("Response: ", response);
-          // that.title=response.title;
-      },
-      error: err => {
-          alert('Field does not exist' + err);
-      }
+        return response.json();
+  }).then(function(response){
+        console.log(response);
+        that.title = response.title;
+        return response;
+  }).catch(function(err){
+        console.log('Field does not exist: ' + err);
   }); 
+  
+  // return $.ajax(searchURL,{
+  //     method: 'GET',
+  //     success: response => {
+  //       console.log("Response: ", response);
+  //         // that.title=response.title;
+  //     },
+  //     error: err => {
+  //         alert('Field does not exist' + err);
+  //     }
+  // }); 
 };
