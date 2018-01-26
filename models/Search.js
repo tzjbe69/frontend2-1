@@ -1,10 +1,9 @@
-/* global $ */
 function Search(){
   this.title="";
   this.year = null;
   this.runtime=null;
   this.genre="";
-  this.languag="";
+  this.language="";
   this.country="";
   this.poster="";
   this.imdbRating=null;
@@ -12,20 +11,16 @@ function Search(){
   this.imdbID=null;
   this.type="";
   this.search="";
+  this.moviesURL = "";
+  this.poster=null;
 }
 
 Search.prototype.searchMovies = function(){
   
-  var searchURL= "https://ancient-caverns-16784.herokuapp.com/movies?Title=" + this.title;
-
-  return $.ajax(searchURL,{
-      method: 'GET',
-      success: response => {
-        console.log("Response: ", response);
-          // that.title=response.title;
-      },
-      error: err => {
-          alert('Field does not exist' + err);
-      }
-  }); 
+  var searchURL= "https://ancient-caverns-16784.herokuapp.com/movies";
+  if (this.title !=="") {
+    searchURL += "?Title=" + this.title;
+  }
+  //if .. others
+  return searchURL;
 };

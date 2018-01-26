@@ -1,23 +1,15 @@
 /*global fetch*/
 function Movies() {
     this.moviesURL = "";
-    this.currentPage = 0;
-    this.numberOfPages = 0;
-    this.links = {};
-    this.movies = [];
-    this.poster=null;
+    this.title= "";
 }
 
 Movies.prototype.getAllMovies = function() {
-    return fetch(this.moviesURL + '', {
+    
+    let searchURL= this.moviesURL;
+    return fetch(searchURL + '', {
                 method: 'GET',
             }).then((response) => response.json())
-            .then((response) => {
-                let paging = response.pagination;
-                this.currentPage = paging.currentPage;
-                this.numberOfPages = paging.numberOfPages;
-                this.links = paging.links;
-                response.results.forEach((movie) => this.movies.push(movie));
-                return response;
-            });
+            .then((response) => response)
+            .catch((err) => (console.log('Field does not exist: ' + err)));
 };

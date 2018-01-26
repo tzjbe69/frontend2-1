@@ -1,60 +1,48 @@
-/*global Movies*/
-/*global logOutFunction*/
-/*global isAuth*/
+/*global Movies hideOrDisplay logOutFunction history*/
 
 window.onload = function() {
     const buttonLogOut = document.getElementById('logout');
     const buttonLogIn = document.getElementsByClassName('signin')[0];
     const registerText = document.querySelector('.register-text');
-
-    // Put on click on the buttons
+    const prevPage = document.getElementById('prev-page');
+    const nextPage = document.getElementById('next-page');
+    const currPage = document.getElementById('current-page')
     buttonLogIn.addEventListener('click', () => window.location.href = "login.html");
     buttonLogOut.addEventListener('click', logOutFunction);
-
-    // if(isAuth()) {
-    //     buttonLogIn.style.display = "none";
-    //     buttonLogOut.style.display = "inline-block";
-    //     registerText.style.display = "none";
-    // } else {
-    //     buttonLogIn.style.display = "inline-block";
-    //     buttonLogOut.style.display = "none";
-    //     registerText.style.display = "inline-block";
-    // }
-
     hideOrDisplay(registerText);
     hideOrDisplay(buttonLogIn, buttonLogOut);
-
-    let moviesList = new Movies();
-    moviesList.moviesURL = 'https://ancient-caverns-16784.herokuapp.com/movies';
-
-    moviesList.getAllMovies()
-        .then(makePagination)
-        .then(displayMovies);
+    prevPage.addEventListener('click', function() {
+        addHistory(currPage, -1)
+        moveTo(prevPage.getAttribute('data-prev-page'));
+    })
+    nextPage.addEventListener('click', function() {
+        addHistory(currPage, 1)
+        moveTo(nextPage.getAttribute('data-next-page'))
+        });
+    document.getElementById('search-form').addEventListener('submit', function(event){
+        event.preventDefault();
+// HERE SEARCH OPTIONS
+// IF You Want make it as separate function
+        var input = document.getElementById('query').value;
+        let search = new Search();
+        search.title = input;
+        if(input !== "") {
+            addHistory(currPage, 0)
+            moveTo(search.searchMovies());
+        }
+    });
+    moveTo('https://ancient-caverns-16784.herokuapp.com/movies');
 };
 
 function makePagination(moviesArray) {
     const prevPage = document.getElementById('prev-page');
     const thisPage = document.getElementById('current-page');
     const nextPage = document.getElementById('next-page');
-
+    prevPage.setAttribute("data-prev-page", moviesArray.pagination.links.prev)
+    nextPage.setAttribute("data-next-page", moviesArray.pagination.links.next)
+    thisPage.setAttribute("data-current-page", moviesArray.pagination.links.self)
     thisPage.innerHTML = moviesArray.pagination.currentPage + " out of " + moviesArray.pagination.numberOfPages;
-    prevPage.addEventListener('click', jumpPrevious);
-    nextPage.addEventListener('click', jumpNext);
-
-    function jumpNext() {
-        if(moviesArray.pagination.links.next != null) {
-            nextPage.removeEventListener('click', jumpNext);
-            prevPage.removeEventListener('click', jumpPrevious);
-            moveTo(moviesArray.pagination.links.next);
-        }
-    }
-    function jumpPrevious() {
-        if(moviesArray.pagination.links.prev != null) {
-            nextPage.removeEventListener('click', jumpNext);
-            prevPage.removeEventListener('click', jumpPrevious);
-            moveTo(moviesArray.pagination.links.prev);
-        }
-    }
+    window.scrollTo(0, 0);
     return moviesArray.results;
 }
 
@@ -95,5 +83,10 @@ function displayMovies(moviesList) {
         articleElement[0].appendChild(anchorTitleEl);
         articleElement[0].appendChild(anchorImageEl);
     }
+}
 
+function addHistory(currPage, number) {
+    let pgNb = parseInt(currPage.innerHTML[0]) + number
+    history.pushState({"link": currPage.getAttribute('data-current-page')}, "mynew page", "page" + pgNb);
+    window.onpopstate = (event) => (moveTo(event.state.link));
 }
