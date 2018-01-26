@@ -11,12 +11,9 @@ function Search(){
   this.imdbID=null;
   this.type="";
   this.search="";
-  this.moviesURL = "";
-  this.poster=null;
 }
 
 Search.prototype.searchMovies = function(){
-  
   var searchURL= "https://ancient-caverns-16784.herokuapp.com/movies";
   if (this.title !=="") {
     searchURL += "?Title=" + this.title;

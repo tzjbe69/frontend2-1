@@ -33,7 +33,7 @@ function submit() {
             Plot: plot.value,
             Language: language.value,
             Country: country.value,
-            Awards : awards.value,
+            Awards: awards.value,
             Type: type.value,
             Production: production.value,
             Website: website.value

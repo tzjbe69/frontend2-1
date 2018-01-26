@@ -1,6 +1,7 @@
 /*global Movie fetch*/
 /*global getCookies*/
-/*global isAuth*/
+
+/*global $*/
 
 function Movie() {
     this.id=null;
@@ -75,23 +76,44 @@ Movie.prototype.getMovieDetails = function() {
 
 Movie.prototype.editMovie = function(data, token) {
     const root = 'https://ancient-caverns-16784.herokuapp.com/';
+    const accessCookie = getCookies().accessCookie;
     var movieId = getMovieIdFromURL();
     console.log(movieId);
 
-    if (!isAuth()) {
-        // do nothing if user is not admin
-        return;
-        // or throw an error
-        //throw new Error("Authorization error!");
-    }
+    // if (!isAuth()) {
+    //     // do nothing if user is not admin
+    //     return;
+    //     // or throw an error
+    //     //throw new Error("Authorization error!");
+    // }
 
-    console.log("request url ... ", root + 'movies/' + movieId);
-
-    return fetch(root + 'movies/' + movieId, {
-        method: 'PUT',
-        headers: {
-            "x-auth-token:": token
+    console.log("editMovie - request url ... ", root + 'movies/' + movieId);
+    
+    // fetch(root + 'movies/' + movieId, {
+    // 	method: 'PUT', 
+    // 	headers: new Headers({
+    // 		'x-auth-token': getCookies().accessCookie
+    // 	}),
+    // 	body: JSON.stringify(data)
+    // });
+    
+    $.ajax({
+        url: root + 'movies/' + movieId,
+        method: "PUT",
+        beforeSend: function(request) {
+        request.setRequestHeader("x-auth-token", accessCookie);
         },
-        body: JSON.stringify(data)
+        data: data,
+        sucess: function(res){
+            console.log(res);
+        }
     });
+
+    // return fetch(root + 'movies/' + movieId, {
+    //     method: 'PUT',
+    //     headers: {
+    //         "x-auth-token:": accessCookie
+    //     },
+    //     body: JSON.stringify(data)
+    // });
 }
