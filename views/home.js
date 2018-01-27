@@ -31,6 +31,7 @@ window.onload = function() {
             moveTo(search.searchMovies());
         }
     });
+    getMoviesAfterRating()
     moveTo('https://ancient-caverns-16784.herokuapp.com/movies');
 };
 
@@ -65,7 +66,7 @@ function displayMovies(moviesList) {
         let titleElement = document.createElement('h3');
         let imageElement = document.createElement('img');
 
-        let url = document.location.href.replace("home.html","movieDetails.html?movieId=") + moviesList[i]._id;
+        let url = "movieDetails.html?movieId=" + moviesList[i]._id;
         
         anchorTitleEl.setAttribute('href', url);
         anchorTitleEl.setAttribute('target', '_blank');
@@ -86,7 +87,25 @@ function displayMovies(moviesList) {
 }
 
 function addHistory(currPage, number) {
-    let pgNb = parseInt(currPage.innerHTML[0]) + number
+    let pgNb = parseInt(currPage.innerHTML[0]) + number;
     history.pushState({"link": currPage.getAttribute('data-current-page')}, "mynew page", "page" + pgNb);
-    window.onpopstate = (event) => (moveTo(event.state.link));
+    window.onpopstate = (event) => {
+        console.log(event.state.link)
+        moveTo(event.state.link);
+    }
+}
+
+function getMoviesAfterRating() {
+    let movieAfterRating = new Movies();
+    movieAfterRating.getAfterRating()
+    .then(function(response) {
+        let topMovies = document.getElementById('top-movies');
+        let listOfMovies = document.createElement('ol');
+        for(let i = 0; i < 10; i++){
+            let listItem = document.createElement('li');
+            listItem.innerHTML = "<a href=movieDetails.html?movieId=" + response[i]._id + " target='_blank'>"+response[i].Title+"</a>";
+            listOfMovies.appendChild(listItem);
+        }
+        topMovies.appendChild(listOfMovies);
+    });
 }
