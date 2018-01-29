@@ -93,7 +93,10 @@ $(document).ready(function(){
 	
 	//registration (validation successfull)
 	function register(username,userpassword){
-		var userRegister = new User();
+		const errorsContainer = document.getElementById("errors");
+		const successContainer = document.getElementById("success");
+
+		let userRegister = new User();
 		userRegister.username = username;
 		userRegister.password = userpassword;
 
@@ -101,15 +104,15 @@ $(document).ready(function(){
 		.then(data => {
 	        if(data.authenticated){
 	            document.getElementById("registration-form").classList.add("invisible");
-        		document.getElementById("errors").classList.add("invisible");
-        		document.getElementById("success").classList.add("visible");
-        		document.getElementById("errors").classList.remove("visible");
-        		document.getElementById("errors").classList.add("invisible");
+        		errorsContainer.classList.add("invisible");
+        		successContainer.classList.add("visible");
+        		errorsContainer.classList.remove("visible");
+        		errorsContainer.classList.add("invisible");
         		document.getElementById("go-to-login").classList.add("visible");
-        		document.getElementById("success").innerHTML = "Successfully registered!";
+        		successContainer.innerHTML = "Successfully registered!";
 	        } else{
-	            document.getElementById("errors").classList.add("visible");
-	            document.getElementById("errors").innerHTML = data.message;
+	            errorsContainer.classList.add("visible");
+	            errorsContainer.innerHTML = data.message;
 	        }
 	    });
 	}
