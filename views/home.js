@@ -4,6 +4,7 @@ window.onload = function() {
     const buttonLogOut = document.getElementById('logout');
     const buttonLogIn = document.getElementsByClassName('signin')[0];
     const registerText = document.querySelector('.register-text');
+    const addBtn = document.getElementById('addBtn');
     const prevPage = document.getElementById('prev-page');
     const nextPage = document.getElementById('next-page');
     const currPage = document.getElementById('current-page')
@@ -11,6 +12,8 @@ window.onload = function() {
     buttonLogOut.addEventListener('click', logOutFunction);
     hideOrDisplay(registerText);
     hideOrDisplay(buttonLogIn, buttonLogOut);
+    hideOrDisplay(buttonLogIn, addBtn);
+    addBtn.addEventListener('click', () => window.location.href = "addMovie.html");
     prevPage.addEventListener('click', function() {
         addHistory(currPage, -1)
         moveTo(prevPage.getAttribute('data-prev-page'));
