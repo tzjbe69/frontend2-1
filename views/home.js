@@ -65,6 +65,8 @@ function displayMovies(moviesList) {
         
         let titleElement = document.createElement('h3');
         let imageElement = document.createElement('img');
+        let imdbNoteElement = document.createElement('p');
+        let genreElement = document.createElement('p');
 
         let url = "movieDetails.html?movieId=" + moviesList[i]._id;
         
@@ -74,15 +76,22 @@ function displayMovies(moviesList) {
         anchorImageEl.setAttribute('href', url);
         anchorImageEl.setAttribute('target', '_blank');
         
-        titleElement.innerHTML = moviesList[i].Title;
+        titleElement.innerHTML = moviesList[i].Title + ' (' + moviesList[i].Year + ')';
         imageElement.setAttribute('src', moviesList[i].Poster);
         imageElement.setAttribute('alt', 'No poster Available');
+        imageElement.setAttribute('height', 269);
+        imageElement.setAttribute('width', 183);
+        imdbNoteElement.innerHTML = 'IMDB Rating: ' + moviesList[i].imdbRating + '/10' + ' ('+ moviesList[i].imdbVotes + ' votes)';
+        genreElement.innerHTML = 'Genre: ' + moviesList[i].Genre;
+
         
         anchorTitleEl.appendChild(titleElement);
         anchorImageEl.appendChild(imageElement);
 
         articleElement[0].appendChild(anchorTitleEl);
         articleElement[0].appendChild(anchorImageEl);
+        articleElement[0].appendChild(imdbNoteElement);
+        articleElement[0].appendChild(genreElement);
     }
 }
 
