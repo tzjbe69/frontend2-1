@@ -96,21 +96,42 @@ input {
 }
 
 #overlay {
-    position: fixed;
+    background-color: #5F9EA0;
+    bottom: 0;
+    cursor: pointer;
+    column-count: 2;
     display: none;
-    top: 50%;
-    left: 50%;
-    width: 100%;
     height: 100%;
+    position: fixed;
+    overflow-y: scroll;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.5);
+    resize: yes;
+    width: 100%;
     z-index: 2;
-    cursor: pointer;
 }
+
 
 form {
     color:white;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+textarea {
+    border-color: #57824D;
+    border-width: 2px;
+    border-radius: 15px;
+    border-style: ridge;
+    font-family: verdana;
+    font-size: 14px;
+    height: 35px;
+}
+
+.edit-form-title {
+    text-align: center;
 }

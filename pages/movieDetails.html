@@ -18,26 +18,32 @@
                 <div id="overlay" class="container">
                     <div class="panel panel-default">
                         <div id="panel" class="panel-body">
-                            <h1>Edit form</h1>
-                            <form>
+                            <div class="edit-form-title">
+                                <h1>Edit form</h1>    
+                            </div>
+                            <form scrolling="auto">
                                 Title: <input type="text" name="title" id="movie-title"><br>
+                                Plot: <textarea type="text" name="plot" id="movie-plot"></textarea><br>
                                 Year: <input type="text" name="year" id="movie-year"><br>
-                                Rated: <input type="text" name="rated" id="movie-rates"><br> 
                                 Released: <input type="text" name="released" id="released"><br>
-                                Runtime: <input type="text" name="runtime" id="movie-runtime"><br>
+                                Rated: <input type="text" name="rated" id="movie-rates"><br>
                                 Genre: <input type="text" name="genre" id="movie-genre"><br>
+                                IMDB Note: <input type="text" name="imdbNote" id="imdb-note"><br>
+                                IMDB Votes: <input type="text" name="imdbVotes" id="imdb-votes"><br>
+                                Runtime: <input type="text" name="runtime" id="movie-runtime"><br>
                                 Directors: <input type="text" name="directors" id="movie-directors"><br>
                                 Writer: <input type="text" name="writers" id="movie-writer"><br>
                                 Actors: <input type="text" name="actors" id="movie-actors"><br>
-                                Plot: <input type="text" name="plot" id="movie-plot"><br>
-                                Language: <input type="text" name="language" id="movie-language"><br>
                                 Country: <input type="text" name="country" id="movie-country"><br>
                                 Awards: <input type="text" name="awards" id="movie-awards"><br>
-                                Type: <input type="text" name="type" id="movie-type"><br>
+                                Language: <input type="text" name="language" id="movie-language"><br>
                                 Production: <input type="text" name="production" id="movie-production"><br>
+                                Metascore: <input type="text" name="metascore" id="movie-metascore"><br>
                                 Website: <input type="text" name="website" id="movie-website"><br>
+                                Type: <input type="text" name="type" id="movie-type"><br>
+                                Poster: <input type="image" name="poster" id="poster" src=><br>
                                 <button type="submit" form="form1" value="Submit" id="btnSubmit" onclick=submit()>Submit</button>
-                                <button id="cancel" class="button" onclick="off()">Cancel</button>
+                                <button id="cancel" class="button">Cancel</button>
                             </form>
                         </div>
                     </div>

@@ -1,42 +1,50 @@
 /* global getCookies */
 /* global Movie */
-/* global User */
 
 function submit() {
       const title = document.getElementById("movie-title"),
-            year = document.getElementById("movie-year"),
-            rated = document.getElementById("movie-rates"),
-            released = document.getElementById("released"),
-            runtime = document.getElementById("movie-runtime"),
-            genre = document.getElementById("movie-genre"),
-            directors = document.getElementById("movie-directors"),
-            writer = document.getElementById("movie-writer"),
-            actors = document.getElementById("movie-actors"),
             plot = document.getElementById("movie-plot"),
+            year = document.getElementById("movie-year"),
+            released = document.getElementById("released"),
+            genre = document.getElementById("movie-genre"),
+            imdbNote = document.getElementById("imdb-note"),
+            imdbVotes = document.getElementById("imdb-votes"),
+            rated = document.getElementById("movie-rates"),
+            directors = document.getElementById("movie-directors"),
+            actors = document.getElementById("movie-actors"),
+            runtime = document.getElementById("movie-runtime"),
+            writer = document.getElementById("movie-writer"),
             language = document.getElementById("movie-language"),
             country = document.getElementById("movie-country"),
             awards = document.getElementById("movie-awards"),
-            type = document.getElementById("movie-type"),
             production = document.getElementById("movie-production"),
-            website = document.getElementById("movie-website");
+            metascore = document.getElementById("movie-metascore"),
+            website = document.getElementById("movie-website"),
+            type = document.getElementById("movie-type");
+            poster = document.getElementById("poster");
+            
 
       const data = {
             Title: title.value,
+            Plot: plot.value,
             Year: year.value,
-            Rated: rated.value,
             Released: released.value,
-            Runtime: runtime.value,
             Genre: genre.value,
+            Rated: rated.value,
+            IMDBNote: imdbNote.value,
+            IMDBVotes: imdbVotes.value,
             Directors: directors.value,
             Writer: writer.value,
             Actors: actors.value,
-            Plot: plot.value,
+            Runtime: runtime.value,
             Language: language.value,
             Country: country.value,
             Awards: awards.value,
-            Type: type.value,
             Production: production.value,
-            Website: website.value
+            Metascore: metascore.value,
+            Website: website.value,
+            Type: type.value,
+            Poster: type.poster
       };
 
       const movie = new Movie();
@@ -52,41 +60,50 @@ function on() {
       const movieModel = new Movie();
       movieModel.getMovieDetails().then(() => {
             const title = document.getElementById("movie-title"),
+                  plot = document.getElementById("movie-plot"),
                   year = document.getElementById("movie-year"),
                   rated = document.getElementById("movie-rates"),
                   released = document.getElementById("released"),
-                  runtime = document.getElementById("movie-runtime"),
                   genre = document.getElementById("movie-genre"),
+                  imdbNote = document.getElementById("imdb-note"),
+                  imdbVotes = document.getElementById("imdb-votes"),
                   directors = document.getElementById("movie-directors"),
                   writer = document.getElementById("movie-writer"),
                   actors = document.getElementById("movie-actors"),
-                  plot = document.getElementById("movie-plot"),
+                  runtime = document.getElementById("movie-runtime"),
                   language = document.getElementById("movie-language"),
                   country = document.getElementById("movie-country"),
                   awards = document.getElementById("movie-awards"),
-                  type = document.getElementById("movie-type"),
                   production = document.getElementById("movie-production"),
-                  website = document.getElementById("movie-website");
+                  metascore = document.getElementById("movie-metascore"),
+                  website = document.getElementById("movie-website"),
+                  type = document.getElementById("movie-type"),
+                  poster = document.getElementById("poster");
       
             title.value = movieModel.title;
+            plot.value = movieModel.plot;
             year.value = movieModel.year;
             rated.value = movieModel.rated;
             released.value = movieModel.released;
-            runtime.value = movieModel.runtime;
             genre.value = movieModel.genre;
+            imdbNote.value = movieModel.imdbNote;
+            imdbVotes.value= movieModel.imdbVotes;
+            runtime.value = movieModel.runtime;
             directors.value = movieModel.directors;
             writer.value = movieModel.writer;
             actors.value = movieModel.actors; 
-            plot.value = movieModel.plot; 
             language.value = movieModel.language; 
             country.value = movieModel.country; 
             awards.value = movieModel.awards; 
-            type.value = movieModel.type; 
             production.value = movieModel.production; 
+            metascore.value = movieModel.metascore;
             website.value = movieModel.website;
+            type.value = movieModel.type;
+            poster.value = movieModel.poster;
       });
 }   
 
-function off() {
-        document.getElementById("overlay").style.display = "none";
+function off(event) {
+      event.preventDefault();
+      document.getElementById("overlay").style.display = "none";
 }
