@@ -117,3 +117,17 @@ Movie.prototype.editMovie = function(data, token) {
     //     body: JSON.stringify(data)
     // });
 }
+Movie.prototype.addMovie = function() {
+    $.ajax({
+            url:'https://ancient-caverns-16784.herokuapp.com/movies/',
+            method: "POST",
+            beforeSend: function(request) {
+            request.setRequestHeader("x-auth-token", getCookies().accessCookie);
+            },
+            data: {Title:this.title, Year:this.year, Poster:this.poster},
+            success: function(res){
+                console.log(res);
+                window.location.href= "home.html";
+            }
+        });    
+}

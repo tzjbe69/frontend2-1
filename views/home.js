@@ -4,6 +4,7 @@ window.onload = function() {
     const buttonLogOut = document.getElementById('logout');
     const buttonLogIn = document.getElementsByClassName('signin')[0];
     const registerText = document.querySelector('.register-text');
+    const addBtn = document.getElementById('addBtn');
     const prevPage = document.getElementById('prev-page');
     const nextPage = document.getElementById('next-page');
     const currPage = document.getElementById('current-page')
@@ -11,6 +12,8 @@ window.onload = function() {
     buttonLogOut.addEventListener('click', logOutFunction);
     hideOrDisplay(registerText);
     hideOrDisplay(buttonLogIn, buttonLogOut);
+    hideOrDisplay(buttonLogIn, addBtn);
+    addBtn.addEventListener('click', () => window.location.href = "addMovie.html");
     prevPage.addEventListener('click', function() {
         addHistory(currPage, -1)
         moveTo(prevPage.getAttribute('data-prev-page'));
@@ -19,17 +22,20 @@ window.onload = function() {
         addHistory(currPage, 1)
         moveTo(nextPage.getAttribute('data-next-page'))
         });
-    document.getElementById('search-form').addEventListener('submit', function(event){
+    const searchForm = document.getElementById('search-form');
+    searchForm.addEventListener('submit', function(event){
         event.preventDefault();
 // HERE SEARCH OPTIONS
 // IF You Want make it as separate function
-        var input = document.getElementById('query').value;
+        const input = document.getElementById('query').value;
         let search = new Search();
         search.title = input;
-        if(input !== "") {
+        if(input !== "" && input.replace(/\s/g, '').length) {
+            searchForm.reset();
             addHistory(currPage, 0)
             moveTo(search.searchMovies());
         }
+
     });
     getMoviesAfterRating()
     moveTo('https://ancient-caverns-16784.herokuapp.com/movies');
