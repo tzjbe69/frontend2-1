@@ -19,17 +19,20 @@ window.onload = function() {
         addHistory(currPage, 1)
         moveTo(nextPage.getAttribute('data-next-page'))
         });
-    document.getElementById('search-form').addEventListener('submit', function(event){
+    const searchForm = document.getElementById('search-form');
+    searchForm.addEventListener('submit', function(event){
         event.preventDefault();
 // HERE SEARCH OPTIONS
 // IF You Want make it as separate function
-        var input = document.getElementById('query').value;
+        const input = document.getElementById('query').value;
         let search = new Search();
         search.title = input;
-        if(input !== "") {
+        if(input !== "" && input.replace(/\s/g, '').length) {
+            searchForm.reset();
             addHistory(currPage, 0)
             moveTo(search.searchMovies());
         }
+
     });
     getMoviesAfterRating()
     moveTo('https://ancient-caverns-16784.herokuapp.com/movies');
