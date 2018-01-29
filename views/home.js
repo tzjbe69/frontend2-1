@@ -22,17 +22,20 @@ window.onload = function() {
         addHistory(currPage, 1)
         moveTo(nextPage.getAttribute('data-next-page'))
         });
-    document.getElementById('search-form').addEventListener('submit', function(event){
+    const searchForm = document.getElementById('search-form');
+    searchForm.addEventListener('submit', function(event){
         event.preventDefault();
 // HERE SEARCH OPTIONS
 // IF You Want make it as separate function
-        var input = document.getElementById('query').value;
+        const input = document.getElementById('query').value;
         let search = new Search();
         search.title = input;
-        if(input !== "") {
+        if(input !== "" && input.replace(/\s/g, '').length) {
+            searchForm.reset();
             addHistory(currPage, 0)
             moveTo(search.searchMovies());
         }
+
     });
     getMoviesAfterRating()
     moveTo('https://ancient-caverns-16784.herokuapp.com/movies');
@@ -68,6 +71,8 @@ function displayMovies(moviesList) {
         
         let titleElement = document.createElement('h3');
         let imageElement = document.createElement('img');
+        let imdbNoteElement = document.createElement('p');
+        let genreElement = document.createElement('p');
 
         let url = "movieDetails.html?movieId=" + moviesList[i]._id;
         
@@ -77,15 +82,22 @@ function displayMovies(moviesList) {
         anchorImageEl.setAttribute('href', url);
         anchorImageEl.setAttribute('target', '_blank');
         
-        titleElement.innerHTML = moviesList[i].Title;
+        titleElement.innerHTML = moviesList[i].Title + ' (' + moviesList[i].Year + ')';
         imageElement.setAttribute('src', moviesList[i].Poster);
         imageElement.setAttribute('alt', 'No poster Available');
+        imageElement.setAttribute('height', 269);
+        imageElement.setAttribute('width', 183);
+        imdbNoteElement.innerHTML = 'IMDB Rating: ' + moviesList[i].imdbRating + '/10' + ' ('+ moviesList[i].imdbVotes + ' votes)';
+        genreElement.innerHTML = 'Genre: ' + moviesList[i].Genre;
+
         
         anchorTitleEl.appendChild(titleElement);
         anchorImageEl.appendChild(imageElement);
 
         articleElement[0].appendChild(anchorTitleEl);
         articleElement[0].appendChild(anchorImageEl);
+        articleElement[0].appendChild(imdbNoteElement);
+        articleElement[0].appendChild(genreElement);
     }
 }
 
