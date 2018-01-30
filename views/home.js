@@ -39,6 +39,22 @@ window.onload = function() {
     });
     getMoviesAfterRating()
     moveTo('https://ancient-caverns-16784.herokuapp.com/movies');
+
+    // START display/hide div search-section
+    const  searchIcon = document.getElementById("search-icon");
+    const  searchSection = document.getElementById("search-section");
+    searchIcon.addEventListener('click', toggleSearchBox);
+
+    function toggleSearchBox(){
+
+        if (searchSection.classList.contains("visible")){
+            searchSection.classList.remove("visible");
+        } else {
+            searchSection.classList.add("visible");
+        }
+    }
+    // END display/hide div search-section
+
 };
 
 function makePagination(moviesArray) {
@@ -66,6 +82,7 @@ function displayMovies(moviesList) {
     articleElement[0].innerHTML = "";
     for (let i = 0; i<moviesList.length; i++) {
         
+        let itemWrapper = document.createElement('div');
         let anchorTitleEl = document.createElement('a');
         let anchorImageEl = document.createElement('a');
         
@@ -94,10 +111,13 @@ function displayMovies(moviesList) {
         anchorTitleEl.appendChild(titleElement);
         anchorImageEl.appendChild(imageElement);
 
-        articleElement[0].appendChild(anchorTitleEl);
-        articleElement[0].appendChild(anchorImageEl);
-        articleElement[0].appendChild(imdbNoteElement);
-        articleElement[0].appendChild(genreElement);
+
+        articleElement[0].appendChild(itemWrapper);
+        itemWrapper.appendChild(anchorTitleEl);
+        itemWrapper.appendChild(anchorTitleEl);
+        itemWrapper.appendChild(anchorImageEl);
+        itemWrapper.appendChild(imdbNoteElement);
+        itemWrapper.appendChild(genreElement);
     }
 }
 
