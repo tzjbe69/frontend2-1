@@ -7,6 +7,7 @@ function onHtmlLoaded() {
     movieModel.getMovieDetails()
     .then(displayMovie);
 
+    document.getElementById('cancel').addEventListener('click', off);
     function displayMovie() {
         
         var contentEl = document.getElementById('movie-display');

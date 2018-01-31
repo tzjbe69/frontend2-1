@@ -2,65 +2,69 @@
 <html>
     <head>
         <title>Team Alpha</title>
-        <!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <script type="text/javascript" src="../utils/utils.js"></script>
         <script type="text/javascript" src="../models/Auth.js"></script>
         <script type="text/javascript" src="../models/Movies.js"></script>
         <script type="text/javascript" src="../models/Search.js"></script>
         <script type="text/javascript" src="../views/home.js"></script>
         <script type="text/javascript" src="../views/logout.js"></script>
-        <!--<script type="text/javascript" src="../views/search.js"></script>-->
-        
         <link rel="stylesheet" href="../css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="../css/responsive.css" type="text/css"/>
+
         
     </head>
     <body>
         <div class="header">
             <div class ="container">
-                <!--<img src="../images/Logogreen.jpg" class="logo" alt="logo"/>-->
-                <div class="search">
-                    <form id="search-form">
-                      <input id="query" type="text" name="search" placeholder="Search" autocomplete="off"  /> 
-                      <input type="submit" id="submit" value="Search" />
-                    </form>
-                    <button class="signin">Sign In</button>
+                <div class="logo">
+                    <img src="../images/Logo2.png" alt="logo"/>
+                </div>
+                
+                <div class="menu">
+                    <button id="addBtn">Add Movie</button>
                     <button id="logout">Logout</button>
-                    <span class="register-text">Don't have an account? Register <a href="register.html">here</a>!</span>
+                    <button class="homebutton">Home</button>
+                    <button class="about">About</button>
+                    <button class="signin">Sign In</button>
+                    <svg id="search-icon" class="search-icon" height="25" width="28" xmlns="http://www.w3.org/2000/svg"><path d="M19.427 21.427a8.5 8.5 0 1 1 2-2l5.585 5.585c.55.55.546 1.43 0 1.976l-.024.024a1.399 1.399 0 0 1-1.976 0l-5.585-5.585zM14.5 21a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13z" fill="white" fill-rule="evenodd"/></svg>
+                    <span class="register-text">Don't have an account?  Register <a href="register.html">here</a>!</span>
                 </div>
             </div>
         </div>
-            <div class="list-container">
-                
-                 <div id="search-results">
-         
-                 </div>
-     
-                 <div class="art-container">
-                     <a href="" target="_blank" class="search-title"></a>
-                     <span class="search-year"></span>
-                     <p class="search-year"></p>
-                     <p class="search-runtime"></p>
-                     <p class="search-genre"></p>
-                     <a href="" target="_blank" class="search-anchor"><img class="search-poster" src=""></a>
-                 </div>
-                 
-                <div class="art-container">
-                   <p class="article">
-                   Color-hex gives information about colors including color models (RGB,HSL,HSV and CMYK), Triadic colors, monochromatic colors and analogous colors calculated in color page. Color-hex.com also generates a simple css code for the selected color. Html element samples are also shown below the color detail page. Simply type the 6 digit color code in the box above and hit enter.
-                   </p>
-                </div>
-                <div class="art-container">
-                   <p class="article">
-                   Color-hex gives information about colors including color models (RGB,HSL,HSV and CMYK), Triadic colors, monochromatic colors and analogous colors calculated in color page. Color-hex.com also generates a simple css code for the selected color. Html element samples are also shown below the color detail page. Simply type the 6 digit color code in the box above and hit enter.
-                   </p>
-                </div>
+
+        <!-- forumalrul de cautare -->
+        <div id="search-section" class="search-section">
+            <div class="container">
+                <form id="search-form">
+                    <input id="query" type="text" name="search" placeholder="Search" autocomplete="off"  /> 
+                    <input type="submit" id="submit" value="Search" />
+                </form>
+            </div>
+        </div>
+        
+        <div class="list-container">
+            <div id="search-results">
+            </div>
+           
+            <div class="art-container">
+               <div class="article">Loading</div>
             </div>
             <aside>
                 <h4>Top movies</h4>
                 <div id="top-movies"></div>
             </aside>
-        <div id="pagination"><p id='prev-page'><</p><p id="current-page"></p><p id="next-page">></p></div>
-        
+            <div id="pagination"><p id='prev-page'><</p><p id="current-page"></p><p id="next-page">></p></div>
+            <div class ="footer">
+                <ul>
+                   <li>Home</li>
+                   <li>About</li>
+                   <li>Contact</li>
+                   <li>Sign In</li>
+                   <p> ©2018 Alpha team </p>
+                </ul>
+             </div>
+        </div>
     </body>
 </html>
 

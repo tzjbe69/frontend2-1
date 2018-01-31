@@ -1,0 +1,15 @@
+@media (max-width: 400px) {
+	
+	/*here we add style for mobile devices*/
+	.container,
+	.list-container,
+	.article div
+	{
+		width: 100%;
+	}
+
+	.article div {
+		text-align: center;
+	}
+
+}
