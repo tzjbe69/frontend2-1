@@ -7,7 +7,11 @@ window.onload = function() {
     const addBtn = document.getElementById('addBtn');
     const prevPage = document.getElementById('prev-page');
     const nextPage = document.getElementById('next-page');
+    const buttonAbout = document.getElementsByClassName('about')[0];
+    const buttonHome = document.getElementsByClassName('homebutton')[0];
     buttonLogIn.addEventListener('click', () => window.location.href = "login.html");
+    buttonAbout.addEventListener('click', () => window.location.href = "about.html");
+    buttonHome.addEventListener('click', () => window.location.href = "home.html");
     buttonLogOut.addEventListener('click', logOutFunction);
     hideOrDisplay(registerText);
     hideOrDisplay(buttonLogIn, buttonLogOut);
