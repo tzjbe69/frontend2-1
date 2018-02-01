@@ -332,16 +332,30 @@ ul {
     font-size: 250% !important;
     margin: 10% 0;
     width: 100%;
+    
+}
+
+#top-movies ol {
+    display: flex;
+    flex-wrap: wrap;
+    color: #AF0909;
+    justify-content:space-between;
+    
+}
+
+#top-movies a, #top-movies a:link, #top-movies a:visited{
+    text-decoration: none;
 }
 
 /*In case the page is taking longer time to load... here is the style and animation*/
 
-#loading > div {
+#loading div {
+    padding: 0;
     border-radius: 100%;
     -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
     animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-    width: 18px;
-    height: 18px;
+    width: 18px !important;
+    height: 18px !important;
     background-color: #AF0909;
 }
 
