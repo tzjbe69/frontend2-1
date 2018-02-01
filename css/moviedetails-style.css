@@ -14,6 +14,7 @@ button {
       font-family: monospace;
       font-size: 14px;
       height: 35px;
+      margin-right: 5px;
 }
 
 .container {
@@ -88,27 +89,34 @@ button {
 /*.signin {*/
 /*      visibility: hidden;*/
 /*}*/
+#overlay.h1 {
+      width: 100%;
+}
 
 #overlay {
       background-color: #F5F5F5;
       bottom: 0;
       cursor: pointer;
-      column-count: 2;
       display: none;
       height: 100%;
+      margin: auto;
+      padding-right: 150px;
       position: fixed;
-      overflow-y: scroll;
-      top: 0;
+      overflow-x: scroll;
+      top: 162px;
       left: 0;
-      right: 0;
+      right: 100px;
       resize: yes;
       width: 100%;
       z-index: 2;
 }
 
 form {
+      column-count: 2;
       box-sizing: border-box;
       text-align: right;
+      padding: 0;
+      width: 100%;
 }
 
 input[type=text] {
@@ -125,8 +133,9 @@ h1 {
 
 .form-buttons {
       display: flex;
-      align-items:center;
-      justify-content: flex-end;
+      align-items: center;
+      justify-content: center;
+      padding-left: 270px;
 }
 
 #movie-poster {
@@ -135,4 +144,17 @@ h1 {
 
 #movie-display {
       padding: 20px;
+}
+
+.form {
+      /*column-count: 2;*/
+      display: flex;
+      justify-content: left;
+      width: 100%;
+      
+}
+
+.edit-form-title {
+      width: 100%;
+      padding-left: 135px;
 }
