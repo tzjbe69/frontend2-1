@@ -10,15 +10,16 @@
 
 	.article div {
 		text-align: center;
-		float: left;
-	}
+/*		float: left;
+		height: auto;
+*/	}
 
-	.article p {
+	/*.article p {
 		width: 50%;
 	}
 	.article img {
 		width: 50%;
-	}
+	}*/
 	.logo {
 		width: 55%;
 	}
