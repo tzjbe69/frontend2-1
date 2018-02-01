@@ -11,6 +11,13 @@
 	.article div {
 		text-align: center;
 	}
+
+	.article p {
+		width: 100%;
+	}
+	.article img {
+		width: 100%;
+	}
 	.logo {
 		width: 55%;
 	}

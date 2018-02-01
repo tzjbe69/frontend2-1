@@ -18,9 +18,23 @@ body {
     padding: 0 25px;
     box-sizing: border-box;
     border: 1px solid #C5BCBC;
-
+    height: 350px;
 }
 
+.article p {
+    float: right;
+    width: 55%;
+    font-family: Tahoma;
+}
+
+.article img {
+    float: left;
+    padding-bottom: 10px;
+}
+.article h3 {
+    font-family: Fantasy;
+    font-weight: bold;
+}
 .art-container {
     border-bottom: double #171a31;
 }
@@ -41,9 +55,9 @@ body {
     color: #D5DACF;
     font-family: monospace;
     font-size: 14px;
-    width: inherit;
-    justify-content: center;
     display: flex;
+    justify-content: center;
+    
 }
 
 .footer p {
@@ -383,3 +397,17 @@ ul {
     transform: scale(1.0);
   }
 }
+
+
+/* About team-css */
+
+.team-list {
+    background-color: red;
+    width: 100%;
+    top: 100px;
+}
+
+
+
+
+
