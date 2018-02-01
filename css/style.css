@@ -1,5 +1,3 @@
-
-
 body {
     margin: 0;
     padding: 0;
@@ -46,7 +44,6 @@ body {
     position: relative;
 }
 
-
 .footer {
     width: 100%;
     background-color: #0B0D18;
@@ -56,7 +53,6 @@ body {
     font-size: 14px;
     display: flex;
     justify-content: center;
-    
 }
 
 .footer p {
@@ -133,7 +129,6 @@ body {
     text-align: right;
     padding-top: 30px;
     font-size: 14px;
-
 }
 
 .menu span {
@@ -219,22 +214,6 @@ body {
 .top-movies ol {
     margin: 0;
 }
-#overlay {
-    position: fixed;
-    display: none;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 2;
-    cursor: pointer;
-}
-
 
 #pagination { 
     width: 100%;
@@ -266,65 +245,12 @@ body {
     color: black;
 }
 
-#overlay {
-    background-color: #5F9EA0;
-    bottom: 0;
-    cursor: pointer;
-    column-count: 2;
-    display: none;
-    height: 100%;
-    position: fixed;
-    overflow-y: scroll;
-    top: 0;
-    left: 0;
-    right: 0;
-    resize: yes;
-    width: 100%;
-    z-index: 2;
-}
-
-h1 {
-    text-align: center;
-}
-
-textarea {
-    border-color: #57824D;
-    border-width: 2px;
-    border-radius: 15px;
-    border-style: ridge;
-    font-family: verdana;
-    font-size: 14px;
-    height: 35px;
-}
-
-.edit-form-title {
-    text-align: center;
-}
-
-ul {
-    display: inline-block;
-    list-style: none;
-    padding-bottom: 5px;
-    padding-top: 5px;
-}
-
-#overlay {
-    background-color: #5F9EA0;
-    bottom: 0;
-    cursor: pointer;
-    column-count: 2;
-    display: none;
-    height: 100%;
-    position: fixed;
-    overflow-y: scroll;
-    top: 0;
-    left: 0;
-    right: 0;
-    resize: yes;
-    width: 100%;
-    z-index: 2;
-}
-
+/*ul {*/
+/*    display: inline-block;*/
+/*    list-style: none;*/
+/*    padding-bottom: 5px;*/
+/*    padding-top: 5px;*/
+/*}*/
 
 /*Movies list*/
 .article  {
@@ -345,16 +271,30 @@ ul {
     font-size: 250% !important;
     margin: 10% 0;
     width: 100%;
+    
+}
+
+#top-movies ol {
+    display: flex;
+    flex-wrap: wrap;
+    color: #AF0909;
+    justify-content:space-between;
+    
+}
+
+#top-movies a, #top-movies a:link, #top-movies a:visited{
+    text-decoration: none;
 }
 
 /*In case the page is taking longer time to load... here is the style and animation*/
 
-#loading > div {
+#loading div {
+    padding: 0;
     border-radius: 100%;
     -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
     animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-    width: 18px;
-    height: 18px;
+    width: 18px !important;
+    height: 18px !important;
     background-color: #AF0909;
 }
 
@@ -383,7 +323,6 @@ ul {
   }
 }
 
-
 /* About team-css */
 
 .team-list {
@@ -391,8 +330,3 @@ ul {
     width: 100%;
     top: 100px;
 }
-
-
-
-
-
