@@ -80,22 +80,8 @@ Movie.prototype.editMovie = function(data, token) {
     var movieId = getMovieIdFromURL();
     console.log(movieId);
 
-    // if (!isAuth()) {
-    //     // do nothing if user is not admin
-    //     return;
-    //     // or throw an error
-    //     //throw new Error("Authorization error!");
-    // }
-
     console.log("editMovie - request url ... ", root + 'movies/' + movieId);
-    
-    // fetch(root + 'movies/' + movieId, {
-    // 	method: 'PUT', 
-    // 	headers: new Headers({
-    // 		'x-auth-token': getCookies().accessCookie
-    // 	}),
-    // 	body: JSON.stringify(data)
-    // });
+   
     
     $.ajax({
         url: root + 'movies/' + movieId,
@@ -108,15 +94,35 @@ Movie.prototype.editMovie = function(data, token) {
             console.log(res);
         }
     });
-
-    // return fetch(root + 'movies/' + movieId, {
-    //     method: 'PUT',
-    //     headers: {
-    //         "x-auth-token:": accessCookie
-    //     },
-    //     body: JSON.stringify(data)
-    // });
 }
+
+// Implement "Delete" movie functionality
+
+Movie.prototype.deleteMovie = function() {
+    const movieId = getMovieIdFromURL(),
+		  pageURL = "https://ancient-caverns-16784.herokuapp.com/";
+	
+    return fetch(pageURL + 'movies/' + movieId , {
+        method: 'DELETE',
+        headers: { 'x-auth-token': getCookies().accessCookie},
+    })
+    .then(response => {
+		if(response.ok) return "OK";
+        else return response.json();
+    })
+    .then(function(response) {
+		if(response !== "OK") window.alert(response.message);
+		else{
+			//redirect to homepage.
+			//gets the array in from of ["http:","", "something", "page"].
+			//for : http://something/page (works generally).
+			let placeholder = window.location.href.split("/");
+			placeholder.pop();
+			window.location.href = placeholder.join("/") + "/home.html";
+		}
+	});
+}
+
 Movie.prototype.addMovie = function() {
     $.ajax({
             url:'https://ancient-caverns-16784.herokuapp.com/movies/',
