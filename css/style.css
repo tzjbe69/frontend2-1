@@ -18,9 +18,23 @@ body {
     padding: 0 25px;
     box-sizing: border-box;
     border: 1px solid #C5BCBC;
-
+    height: 350px;
 }
 
+.article p {
+    float: right;
+    width: 55%;
+    font-family: Tahoma;
+}
+
+.article img {
+    float: left;
+    padding-bottom: 10px;
+}
+.article h3 {
+    font-family: Fantasy;
+    font-weight: bold;
+}
 .art-container {
     border-bottom: double #171a31;
 }
