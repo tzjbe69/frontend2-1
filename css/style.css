@@ -41,9 +41,9 @@ body {
     color: #D5DACF;
     font-family: monospace;
     font-size: 14px;
-    width: inherit;
-    justify-content: center;
     display: flex;
+    justify-content: center;
+    
 }
 
 .footer p {
@@ -369,3 +369,17 @@ ul {
     transform: scale(1.0);
   }
 }
+
+
+/* About team-css */
+
+.team-list {
+    background-color: red;
+    width: 100%;
+    top: 100px;
+}
+
+
+
+
+
