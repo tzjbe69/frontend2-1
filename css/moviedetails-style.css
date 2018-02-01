@@ -129,14 +129,16 @@ h1 {
       justify-content: flex-end;
 }
 
-#movie-poster {
-      float: left;
-      width: 33%;
+article img {
+      position: absolute;
+      top: 180px;
 }
 
 article p {
-      float: right;
+      position: relative;
       width: 67%;
+      margin: 8px;
+      left: 33%;
 }
 
 #movie-display {
