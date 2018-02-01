@@ -29,8 +29,12 @@ window.onload = function() {
 // HERE SEARCH OPTIONS
 // IF You Want make it as separate function
         const input = document.getElementById('query').value;
+        let advanced = document.getElementById('advanced').value;
+
         let search = new Search();
-        search.title = input;
+
+        search[advanced] = input;
+ 
         if(input !== "" && input.replace(/\s/g, '').length) {
             searchForm.reset();
             addHistory(search.searchMovies());
