@@ -231,6 +231,7 @@ body {
     cursor: pointer;
 }
 
+
 #pagination { 
     width: 100%;
     align-items: center;
@@ -320,5 +321,16 @@ ul {
     z-index: 2;
 }
 
+
+/*Movies list*/
+.article  {
+    width: 100%;
+    
+}
+.article div {
+    width: 50%;
+    float: left;
+    background-color: #eaeaea;
+}
 
 
