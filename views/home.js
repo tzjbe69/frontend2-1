@@ -28,15 +28,15 @@ window.onload = function() {
         event.preventDefault();
 // HERE SEARCH OPTIONS
 // IF You Want make it as separate function
-        const input = document.getElementById('query').value;
+        const input = document.getElementById('query');
         let advanced = document.getElementById('advanced').value;
 
         let search = new Search();
 
-        search[advanced] = input;
+        search[advanced] = input.value;
  
-        if(input !== "" && input.replace(/\s/g, '').length) {
-            searchForm.reset();
+        if(input.value !== "" && input.value.replace(/\s/g, '').length) {
+            input.value = '';
             addHistory(search.searchMovies());
             moveTo(search.searchMovies());
         }
@@ -85,7 +85,7 @@ function makePagination(moviesArray) {
     if (moviesArray.pagination.numberOfPages > 1) {
         thisPage.innerHTML += " out of " + moviesArray.pagination.numberOfPages;
     } 
-    moviesArray.pagination.currentPage === moviesArray.pagination.numberOfPages ? nextPage.style.display = 'none' : nextPage.style.display;
+    moviesArray.pagination.currentPage === moviesArray.pagination.numberOfPages ? nextPage.style.display = 'none' : nextPage.style.display = 'block';
     (moviesArray.pagination.currentPage == 1 || moviesArray.pagination.currentPage == 0) ? prevPage.style.display = 'none' : prevPage.style.display = 'block';
     window.scrollTo(0, 0);
     return moviesArray.results;
