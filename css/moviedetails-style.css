@@ -47,6 +47,7 @@ button {
       position: fixed;
       width: 100%;
       top: 0;
+      z-index: 1;
 }
 
 .logo {
@@ -138,14 +139,23 @@ h1 {
       padding-left: 270px;
 }
 
-#movie-poster {
-      display: inline-block;
+article img {
+      position: absolute;
+      top: 180px;
+}
+
+article p {
+      position: relative;
+      width: 67%;
+      margin: 8px;
+      left: 33%;
 }
 
 #movie-display {
       padding: 20px;
 }
 
+<<<<<<< HEAD
 .form {
       /*column-count: 2;*/
       display: flex;
@@ -157,4 +167,10 @@ h1 {
 .edit-form-title {
       width: 100%;
       padding-left: 135px;
+=======
+#movie-display::after {
+      content: '';
+      display: block;
+      clear: both;
+>>>>>>> e30b06ac654c7595dbaece8dad8086146f2141ea
 }

@@ -24,8 +24,8 @@ function onHtmlLoaded() {
         };
         
         var movieHtml = [];
-        movieHtml['title'] = '<h3>Title: %s</h3>';
-        movieHtml['poster'] = '<img src="%s" id="poster-display"/>';
+        movieHtml['title'] = '<h2>%s</h2>';
+        movieHtml['poster'] = '<img src="%s"/>';
         movieHtml['year'] = '<p>Year: %s</p>';
         movieHtml['plot'] = '<p>Plot: %s</p>';
         movieHtml['actors'] = '<p>Cast: %s</p>';
@@ -35,7 +35,7 @@ function onHtmlLoaded() {
         movieHtml['language'] = '<p>Language: %s</p>';
         movieHtml['metascore'] = '<p>Metascore: %s</p>';
         movieHtml['rated'] = '<p>Rated: %s</p>';
-        movieHtml['ratings'[[0].value]]= '<p>Ratings: %s %s</p>';
+        movieHtml['ratings']= '<p>Ratings: %s</p>';
         movieHtml['released'] = '<p>Released: %s</p>';
         movieHtml['response'] = '<p>Response: %s</p>';
         movieHtml['runtime'] = '<p>Runtime: %s</p>';
@@ -45,10 +45,15 @@ function onHtmlLoaded() {
         movieHtml['imdbRating'] = '<p>IMDB Rating: %s</p>';
         movieHtml['imdbVotes'] = '<p>IMDB Votes: %s</p>';
         movieHtml['totalSeasons'] = '<p>Total Seasons: %s</p>';
-        movieHtml['_id'] = '<p>ID: %s</p>';
+        movieHtml['id'] = '<p>ID: %s</p>';
+        movieHtml['production'] = '<p>Production: %s</p>';
+        movieHtml['dvd'] = '<p>DVD: %s</p>';
+        movieHtml['boxOffice'] = '<p>boxOffice: %s</p>';
+        movieHtml['website'] = '<p>Link: %s</p>';
+        movieHtml['awards'] = '<p>Awards: %s</p>';
         
         for (let key in movieModel) {
-            if (movieModel[key] !== undefined && movieModel[key] !== "N/A" && typeof movieModel[key] !== "function") {
+            if (movieModel[key] !== undefined && movieModel[key] !== "N/A" && typeof movieModel[key] !== "function" && key !== 'id' && key !== 'response' && key !== 'ratings' && key !=='imdbID') {
             // if (movieModel[key] !== undefined && typeof movieModel[key] !== "function" && key === 'title') {
 
                 var value = movieHtml[key].sprintf(movieModel[key]);

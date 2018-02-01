@@ -46,8 +46,8 @@ Movie.prototype.getMovieDetails = function() {
         console.log(response);
         return response.json();
     }).then(function(data) {
-            that.id=data.ID;
             that.title=data.Title;
+            that.poster=data.Poster;
             that.year=data.Year;
             that.rated=data.Rated;
             that.released=data.Released;
@@ -60,7 +60,6 @@ Movie.prototype.getMovieDetails = function() {
             that.language=data.Language;
             that.country=data.Country;
             that.awards=data.Awards;
-            that.poster=data.Poster;
             that.metascore=data.Metascore;
             that.imdbRating=data.imdbRating;
             that.imdbVotes=data.imdbVotes;
@@ -71,6 +70,9 @@ Movie.prototype.getMovieDetails = function() {
             that.production=data.Production;
             that.website=data.Website;
             that.response=data.Response;
+            that.totalSeasons=data.totalSeasons;
+            that.ratings=data.Ratings;
+            that.id=data._id;
     });
 }
 
