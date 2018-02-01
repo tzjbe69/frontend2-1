@@ -14,9 +14,9 @@ function Search(){
 }
 
 Search.prototype.searchMovies = function(){
-  var searchURL= "https://ancient-caverns-16784.herokuapp.com/movies";
-  if (this.title !=="") {
-    searchURL += "?Title=" + this.title;
+  let searchURL = '';
+  if (this.title !== '') {
+    searchURL = "Title=" + this.title;
   }
   //if .. others
   return searchURL;
