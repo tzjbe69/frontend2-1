@@ -5,11 +5,24 @@ body {
     padding: 0;
     /* the background -image from html*/
     background-image: url("../images/background-blurred.jpg");
+    background-size: cover;
+}
+/*Movies list*/
+.article  {
+    width: 100%;
+}
+.article div {
+    width: 50%;
+    float: left;
+    background-color: #eaeaea;
+    padding: 0 25px;
+    box-sizing: border-box;
+    border: 1px solid #C5BCBC;
+
 }
 
 .art-container {
     border-bottom: double #171a31;
-    margin-top: 10px;
 }
 
 .container {
@@ -22,17 +35,20 @@ body {
 
 
 .footer {
+    width: 100%;
     background-color: #0B0D18;
     border-top: double #171a31;
     color: #D5DACF;
     font-family: monospace;
     font-size: 14px;
-    margin-top: 5px;
-    width: inherit;
+    display: flex;
+    justify-content: center;
+    
 }
 
 .footer p {
     padding-bottom: 5px;
+
 }
 
 .header {
@@ -71,6 +87,13 @@ body {
     height: 35px;
 }
 
+/* about logo-image in header div*/
+.logo img{
+    width: 25%;
+    float: left;
+    height: 70px;
+
+}
 .logo {
     height: 70px;
     width: 80%;
@@ -89,18 +112,9 @@ body {
     padding-top: 90px;
 }
 
-
-
-/* about logo-image in header div*/
-.header img{
-    width: 25%;
-    float: left;
-    height: 70px;
-
-}
 /* about menu div from header*/
 .menu {
-    width: 25%;
+    width: 45%;
     float: right; 
     position: relative;
     text-align: right;
@@ -131,7 +145,6 @@ body {
     color: red;
 }
 .search-section{
-    opacity: 0;
     top: 100px;
     left: 0;
     background-color: #211F1F;
@@ -141,10 +154,11 @@ body {
     float: right;
     transition: opacity 250ms ease;
     position: fixed;
+    display: none;
 }
 
 .search-section.visible {
-    opacity: 1;
+    display: block;
 }
 .search-section input[type="text"] {
     width: 90%;
@@ -176,8 +190,22 @@ body {
     box-sizing: border-box;
 
 }
+.top-movies {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    background-color: #DAC7E0;
+    top: 120px;
+}
+.top-movies h4{
+    margin: 0;
+    padding: 10px 0;
+    padding-left: 35px;
+}
 
-
+.top-movies ol {
+    margin: 0;
+}
 #overlay {
     position: fixed;
     display: none;
@@ -194,16 +222,18 @@ body {
     cursor: pointer;
 }
 
+
 #pagination { 
+    width: 100%;
     align-items: center;
     border-top: double #171a31;
     display: flex;
     justify-content: center;
-    padding-top: 5px;
+    background-color: #9C80A5;
 }
 
 #pagination p {
-    margin: 0 5px;
+    padding: 3px 3px;
     font-size: 13px;
 }
 
@@ -240,8 +270,6 @@ body {
     z-index: 2;
 }
 
-
-
 h1 {
     text-align: center;
 }
@@ -255,7 +283,6 @@ textarea {
     font-size: 14px;
     height: 35px;
 }
-
 
 .edit-form-title {
     text-align: center;
@@ -286,15 +313,6 @@ ul {
 }
 
 
-h1 {
-    text-align: center;
-}
-
-.edit-form-title {
-    text-align: center;
-}
-
-
 /*Movies list*/
 .article  {
     width: 100%;
@@ -305,5 +323,63 @@ h1 {
     float: left;
     background-color: #eaeaea;
 }
+
+
+#loading {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 250% !important;
+    margin: 10% 0;
+    width: 100%;
+}
+
+/*In case the page is taking longer time to load... here is the style and animation*/
+
+#loading > div {
+    border-radius: 100%;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    width: 18px;
+    height: 18px;
+    background-color: #AF0909;
+}
+
+#loading .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+#loading .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% { 
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}
+
+
+/* About team-css */
+
+.team-list {
+    background-color: red;
+    width: 100%;
+    top: 100px;
+}
+
+
+
 
 

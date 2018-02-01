@@ -1,4 +1,4 @@
-@media (max-width: 400px) {
+@media only screen and (max-width: 400px) {
 	
 	/*here we add style for mobile devices*/
 	.container,
@@ -10,6 +10,40 @@
 
 	.article div {
 		text-align: center;
+	}
+	.logo {
+		width: 55%;
+	}
+	.logo img {
+		width: 100%;
+	}
+	.menu {
+		width: 100%;
+	}
+}
+@media only screen and (min-width: 401px) and (max-width: 700px) {
+	body {
+		/*display: none;*/
+	}
+	/* here we add style for tablet devices*/
+	.container,
+	.list-container,
+	.article div
+	{
+		width: 100%;
+	}
+
+	.article div {
+		text-align: center;
+	}
+	.logo {
+		width: 55%;
+	}
+	.logo img {
+		width: 100%;
+	}
+	.menu {
+		width: 100%;
 	}
 
 }

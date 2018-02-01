@@ -2,24 +2,24 @@
 function Movies() {
     this.moviesURL = "";
     this.title= "";
+    this.numberOfMovies = 0;
 }
 
 Movies.prototype.getAllMovies = function() {
-    
-    let searchURL= this.moviesURL;
+    let searchURL= 'https://ancient-caverns-16784.herokuapp.com/movies' + this.moviesURL;
     return fetch(searchURL + '', {method: 'GET'})
             .then((response) => response.json())
             .then((response) => response)
-            .catch((err) => (console.log('Field does not exist: ' + err)));
+            .catch((err) => err);
 };
 
 Movies.prototype.getAfterRating = function () {
-    let url = "https://ancient-caverns-16784.herokuapp.com/movies?take=80&skip=0"
+    let url = "https://ancient-caverns-16784.herokuapp.com/movies?take=" + this.numberOfMovies + "&skip=0";
     return fetch(url, {method: 'GET'})
             .then((response) => response.json())
             .then((response) => {
-                response.results.sort((a, b) => b.imdbRating - a.imdbRating)
-                return response.results
+                response.results.sort((a, b) => b.imdbRating - a.imdbRating);
+                return response.results;
                 })
-            .catch((err) => (console.log('Field does not exist: ' + err)));
-}
+            .catch((err) => err);
+};
