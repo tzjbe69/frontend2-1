@@ -35,7 +35,15 @@
         <div id="search-section" class="search-section">
             <div class="container">
                 <form id="search-form">
-                    <input id="query" type="text" name="search" placeholder="Search" autocomplete="off"  /> 
+                    <input id="query" type="text" name="search" placeholder="Search" autocomplete="off"  />
+                    
+                    <select id="advanced">
+                        <option value="title" selected="selected">Title</option>
+                        <option value="year">Year</option>
+                        <option value="genre">Genre</option>
+                        <option value="language">Language</option>
+                        <option value="country">Country</option>
+                    </select>
                     <input type="submit" id="submit" value="Search" />
                 </form>
             </div>
