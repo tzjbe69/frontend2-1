@@ -1,4 +1,4 @@
-/*global Movies hideOrDisplay logOutFunction history*/
+/*global Movies hideOrDisplay logOutFunction history Search */
 
 window.onload = function() {
     const buttonLogOut = document.getElementById('logout');
@@ -7,7 +7,6 @@ window.onload = function() {
     const addBtn = document.getElementById('addBtn');
     const prevPage = document.getElementById('prev-page');
     const nextPage = document.getElementById('next-page');
-    const currPage = document.getElementById('current-page')
     buttonLogIn.addEventListener('click', () => window.location.href = "login.html");
     buttonLogOut.addEventListener('click', logOutFunction);
     hideOrDisplay(registerText);
@@ -15,12 +14,14 @@ window.onload = function() {
     hideOrDisplay(buttonLogIn, addBtn);
     addBtn.addEventListener('click', () => window.location.href = "addMovie.html");
     prevPage.addEventListener('click', function() {
-        addHistory(currPage, -1)
-        moveTo(prevPage.getAttribute('data-prev-page'));
-    })
+        let attrOfPage = prevPage.getAttribute('data-prev-page').split('?')[1];
+        addHistory(attrOfPage);
+        moveTo(attrOfPage);
+    });
     nextPage.addEventListener('click', function() {
-        addHistory(currPage, 1)
-        moveTo(nextPage.getAttribute('data-next-page'))
+        let attrOfPage = nextPage.getAttribute('data-next-page').split('?')[1];
+        addHistory(attrOfPage);
+        moveTo(attrOfPage);
         });
     const searchForm = document.getElementById('search-form');
     searchForm.addEventListener('submit', function(event){
@@ -32,17 +33,16 @@ window.onload = function() {
         search.title = input;
         if(input !== "" && input.replace(/\s/g, '').length) {
             searchForm.reset();
-            addHistory(currPage, 0)
+            addHistory(search.searchMovies());
             moveTo(search.searchMovies());
         }
-
     });
-    getMoviesAfterRating()
-    moveTo('https://ancient-caverns-16784.herokuapp.com/movies');
-
+    window.onpopstate = () => (moveTo(window.location.href.split('?')[1]));
+    getMoviesAfterRating();
+    moveTo(window.location.href.split('?')[1]);
     // START display/hide div search-section
-    const  searchIcon = document.getElementById("search-icon");
-    const  searchSection = document.getElementById("search-section");
+    const searchIcon = document.getElementById("search-icon");
+    const searchSection = document.getElementById("search-section");
     searchIcon.addEventListener('click', toggleSearchBox);
 
     function toggleSearchBox(){
@@ -54,33 +54,47 @@ window.onload = function() {
         }
     }
     // END display/hide div search-section
-
 };
 
-function makePagination(moviesArray) {
-    const prevPage = document.getElementById('prev-page');
-    const thisPage = document.getElementById('current-page');
-    const nextPage = document.getElementById('next-page');
-    prevPage.setAttribute("data-prev-page", moviesArray.pagination.links.prev)
-    nextPage.setAttribute("data-next-page", moviesArray.pagination.links.next)
-    thisPage.setAttribute("data-current-page", moviesArray.pagination.links.self)
-    thisPage.innerHTML = moviesArray.pagination.currentPage + " out of " + moviesArray.pagination.numberOfPages;
-    window.scrollTo(0, 0);
-    return moviesArray.results;
-}
-
 function moveTo(page) {
-    if (page != null) {
+    if (page == undefined) {
+        page = '';
+    }
+    if (page !== null) {
         let moviesListNew = new Movies();
-        moviesListNew.moviesURL = page;
+        page != '' ? moviesListNew.moviesURL = '?' + page : moviesListNew.moviesURL = page;
         moviesListNew.getAllMovies().then(makePagination).then(displayMovies);
     }
 }
 
+function makePagination(moviesArray) {
+    if (moviesArray == "TypeError: Failed to fetch") {
+        return "error";
+    }
+    const prevPage = document.getElementById('prev-page');
+    const thisPage = document.getElementById('current-page');
+    const nextPage = document.getElementById('next-page');
+    prevPage.setAttribute("data-prev-page", moviesArray.pagination.links.prev);
+    nextPage.setAttribute("data-next-page", moviesArray.pagination.links.next);
+    thisPage.setAttribute("data-current-page", moviesArray.pagination.links.self.split('?')[1]);
+    thisPage.innerHTML = "Page " + moviesArray.pagination.currentPage;
+    if (moviesArray.pagination.numberOfPages > 1) {
+        thisPage.innerHTML += " out of " + moviesArray.pagination.numberOfPages;
+    } 
+    moviesArray.pagination.currentPage === moviesArray.pagination.numberOfPages ? nextPage.style.display = 'none' : nextPage.style.display;
+    (moviesArray.pagination.currentPage == 1 || moviesArray.pagination.currentPage == 0) ? prevPage.style.display = 'none' : prevPage.style.display = 'block';
+    window.scrollTo(0, 0);
+    return moviesArray.results;
+}
+
 function displayMovies(moviesList) {
+    if (moviesList === "error") {
+        document.getElementById('loading').innerHTML = "THERE IS A SERVER ERROR PLEASE TRY AGAIN LATER";
+        return ;
+    }
     let articleElement = document.getElementsByClassName('article');
     articleElement[0].innerHTML = "";
-    for (let i = 0; i<moviesList.length; i++) {
+    for (let i = 0; i < moviesList.length; i++) {
         
         let itemWrapper = document.createElement('div');
         let anchorTitleEl = document.createElement('a');
@@ -98,8 +112,13 @@ function displayMovies(moviesList) {
         
         anchorImageEl.setAttribute('href', url);
         anchorImageEl.setAttribute('target', '_blank');
-        
+        if (moviesList[i].Title == undefined) {
+            moviesList[i].Title = "NO MOVIE TITLE";
+        }       
         titleElement.innerHTML = moviesList[i].Title + ' (' + moviesList[i].Year + ')';
+        if (moviesList[i].Poster == 'N/A') {
+            moviesList[i].Poster = "../images/no-poster.jpg";
+        }
         imageElement.setAttribute('src', moviesList[i].Poster);
         imageElement.setAttribute('alt', 'No poster Available');
         imageElement.setAttribute('height', 269);
@@ -121,18 +140,17 @@ function displayMovies(moviesList) {
     }
 }
 
-function addHistory(currPage, number) {
-    let pgNb = parseInt(currPage.innerHTML[0]) + number;
-    history.pushState({"link": currPage.getAttribute('data-current-page')}, "mynew page", "page" + pgNb);
-    window.onpopstate = (event) => {
-        console.log(event.state.link)
-        moveTo(event.state.link);
-    }
+function addHistory (currPage) {
+    history.pushState({}, "mynew page", "?" + currPage);
 }
 
 function getMoviesAfterRating() {
     let movieAfterRating = new Movies();
-    movieAfterRating.getAfterRating()
+    movieAfterRating.getAllMovies()
+    .then(function(response) {
+        movieAfterRating.numberOfMovies = response.pagination.numberOfPages * 10;
+        return movieAfterRating.getAfterRating();
+        })
     .then(function(response) {
         let topMovies = document.getElementById('top-movies');
         let listOfMovies = document.createElement('ol');
