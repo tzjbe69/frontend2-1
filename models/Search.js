@@ -1,23 +1,26 @@
 function Search(){
   this.title="";
-  this.year = null;
-  this.runtime=null;
+  this.year = "";
   this.genre="";
   this.language="";
   this.country="";
-  this.poster="";
-  this.imdbRating=null;
-  this.imdbVotes=null;
-  this.imdbID=null;
-  this.type="";
-  this.search="";
+ 
 }
 
 Search.prototype.searchMovies = function(){
   let searchURL = '';
   if (this.title !== '') {
     searchURL = "Title=" + this.title;
+  }else if(this.year !== ''){
+    searchURL = "Year=" + this.year;
+  }else if(this.genre !== ''){
+    searchURL ="Genre=" + this.genre;
+  }else if(this.language !== ''){
+    searchURL ="Language=" + this.language;
+  }else if(this.country !== ''){
+    searchURL = "Country=" + this.country;
   }
+  console.log(searchURL);
   //if .. others
   return searchURL;
 };

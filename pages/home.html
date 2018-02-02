@@ -6,11 +6,14 @@
         <script type="text/javascript" src="../utils/utils.js"></script>
         <script type="text/javascript" src="../models/Auth.js"></script>
         <script type="text/javascript" src="../models/Movies.js"></script>
+        <script type="text/javascript" src="../models/Movie.js"></script>
         <script type="text/javascript" src="../models/Search.js"></script>
         <script type="text/javascript" src="../views/home.js"></script>
         <script type="text/javascript" src="../views/logout.js"></script>
         <link rel="stylesheet" href="../css/style.css" type="text/css"/>
-        <link rel="stylesheet" href="../css/responsive.css" type="text/css"/>  
+        <link rel="stylesheet" href="../css/responsive.css" type="text/css"/>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     </head>
     <body>
         <div class="header">
@@ -35,7 +38,15 @@
         <div id="search-section" class="search-section">
             <div class="container">
                 <form id="search-form">
-                    <input id="query" type="text" name="search" placeholder="Search" autocomplete="off"  /> 
+                    <input id="query" type="text" name="search" placeholder="Search" autocomplete="off"  />
+                    
+                    <select id="advanced">
+                        <option value="title" selected="selected">Title</option>
+                        <option value="year">Year</option>
+                        <option value="genre">Genre</option>
+                        <option value="language">Language</option>
+                        <option value="country">Country</option>
+                    </select>
                     <input type="submit" id="submit" value="Search" />
                 </form>
             </div>
@@ -67,13 +78,7 @@
             </div>   
         </div>
         <div class ="footer">
-            <!-- <ul>
-               <li><a href="home.html">Home</a></li>
-               <li><a href="about.html">About</a></li>
-               <li><a href="contact.html">Contact</a></li>
-               <li><a href="login.html">Sign In</a></li>
-            </ul> -->
-            <p> ©2018 Team Alpha </p>
+            <p>&copy2018 Team Alpha </p>
         </div>
             
     </body>
