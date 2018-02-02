@@ -89,5 +89,6 @@ const Utils = {
         const buttonAbout = document.querySelector('.about');
         buttonHome.addEventListener('click', () => window.location.href = "home.html");
         buttonAbout.addEventListener('click', () => window.location.href = "about.html");
+        
     }
 }

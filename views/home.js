@@ -7,7 +7,7 @@ window.onload = function() {
     const addBtn = document.getElementById('addBtn');
     const prevPage = document.getElementById('prev-page');
     const nextPage = document.getElementById('next-page');
-    
+
     const buttonAbout = document.querySelector('.about');
     const buttonHome = document.querySelector('.homebutton');
 
