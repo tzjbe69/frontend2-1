@@ -49,18 +49,15 @@ function onHtmlLoaded() {
         movieHtml['production'] = '<p>Production: %s</p>';
         movieHtml['dvd'] = '<p>DVD: %s</p>';
         movieHtml['boxOffice'] = '<p>boxOffice: %s</p>';
-        movieHtml['website'] = '<p>Link: %s</p>';
+        movieHtml['website'] = '<a href="%s">Website</a>';
         movieHtml['awards'] = '<p>Awards: %s</p>';
         
         for (let key in movieModel) {
             if (movieModel[key] !== undefined && movieModel[key] !== "N/A" && typeof movieModel[key] !== "function" && key !== 'id' && key !== 'response' && key !== 'ratings' && key !=='imdbID') {
-            // if (movieModel[key] !== undefined && typeof movieModel[key] !== "function" && key === 'title') {
-
                 var value = movieHtml[key].sprintf(movieModel[key]);
                 movieEl.innerHTML += value;
             }
         }
-        
         contentEl.appendChild(movieEl);
     }
 }

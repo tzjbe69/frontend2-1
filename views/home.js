@@ -116,10 +116,10 @@ function displayMovies(moviesList) {
         let url = "movieDetails.html?movieId=" + moviesList[i]._id;
         
         anchorTitleEl.setAttribute('href', url);
-        anchorTitleEl.setAttribute('target', '_blank');
+        // anchorTitleEl.setAttribute('target', '_blank');
         
         anchorImageEl.setAttribute('href', url);
-        anchorImageEl.setAttribute('target', '_blank');
+        // anchorImageEl.setAttribute('target', '_blank');
         if (moviesList[i].Title == undefined) {
             moviesList[i].Title = "NO MOVIE TITLE";
         }       
