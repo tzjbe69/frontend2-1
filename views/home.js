@@ -2,30 +2,40 @@
 
 window.onload = function() {
     const buttonLogOut = document.getElementById('logout');
-    const buttonLogIn = document.getElementsByClassName('signin')[0];
+    const buttonLogIn = document.querySelector('.signin');
     const registerText = document.querySelector('.register-text');
     const addBtn = document.getElementById('addBtn');
     const prevPage = document.getElementById('prev-page');
     const nextPage = document.getElementById('next-page');
+    const buttonAbout = document.querySelector('.about');
+    const buttonHome = document.querySelector('.homebutton');
+
+    Utils.ready();
+
     buttonLogIn.addEventListener('click', () => window.location.href = "login.html");
     buttonLogOut.addEventListener('click', logOutFunction);
+
     hideOrDisplay(registerText);
     hideOrDisplay(buttonLogIn, buttonLogOut);
     hideOrDisplay(buttonLogIn, addBtn);
+
     addBtn.addEventListener('click', () => window.location.href = "addMovie.html");
     prevPage.addEventListener('click', function() {
         let attrOfPage = prevPage.getAttribute('data-prev-page').split('?')[1];
         addHistory(attrOfPage);
         moveTo(attrOfPage);
     });
+
     nextPage.addEventListener('click', function() {
         let attrOfPage = nextPage.getAttribute('data-next-page').split('?')[1];
         addHistory(attrOfPage);
         moveTo(attrOfPage);
         });
+
     const searchForm = document.getElementById('search-form');
     searchForm.addEventListener('submit', function(event){
         event.preventDefault();
+
 // HERE SEARCH OPTIONS
 // IF You Want make it as separate function
         const input = document.getElementById('query').value;
@@ -37,8 +47,11 @@ window.onload = function() {
             moveTo(search.searchMovies());
         }
     });
+
     window.onpopstate = () => (moveTo(window.location.href.split('?')[1]));
+
     getMoviesAfterRating();
+
     moveTo(window.location.href.split('?')[1]);
     // START display/hide div search-section
     const searchIcon = document.getElementById("search-icon");
@@ -71,12 +84,15 @@ function makePagination(moviesArray) {
     if (moviesArray == "TypeError: Failed to fetch") {
         return "error";
     }
+
     const prevPage = document.getElementById('prev-page');
     const thisPage = document.getElementById('current-page');
     const nextPage = document.getElementById('next-page');
+
     prevPage.setAttribute("data-prev-page", moviesArray.pagination.links.prev);
     nextPage.setAttribute("data-next-page", moviesArray.pagination.links.next);
     thisPage.setAttribute("data-current-page", moviesArray.pagination.links.self.split('?')[1]);
+
     thisPage.innerHTML = "Page " + moviesArray.pagination.currentPage;
     if (moviesArray.pagination.numberOfPages > 1) {
         thisPage.innerHTML += " out of " + moviesArray.pagination.numberOfPages;
