@@ -1,7 +1,9 @@
 
 window.onload = function() {
 
-    const submitBtn = document.getElementsByTagName('button')[0];
+    Utils.ready();
+
+    const submitBtn = document.querySelector('.submit-button');
     const usernameInput = document.getElementsByTagName('input')[0];
     const passwordInput = document.getElementsByTagName('input')[1];
     const loginNotif = document.querySelector('.login-notification');
@@ -23,15 +25,14 @@ window.onload = function() {
                     loginNotif.innerHTML = "<h5>Login Successful, young Padawan " + userLogin.username + ". You will now" + 
                     " be redirected to the Home Page.</h5>";
                     loginNotif.style.backgroundColor = "#07b001";
-                    loginNotif.style.marginTop = "25%";
-                    loginForm.style.marginTop = "25%";
+                    // loginNotif.style.marginTop = "25%";
+                    // loginForm.style.marginTop = "25%";
                 	setTimeout(() => {document.location.href = "home.html"}, 3000);
-            	}
-                else {
+            	} else {
                     loginNotif.innerHTML = "<h5>Your username/password is incorrect.</h5>";
                     loginNotif.style.backgroundColor = "#ba1a14";
-                    loginNotif.style.marginTop = "25%";
-                    loginForm.style.marginTop = "25%";
+                    // loginNotif.style.marginTop = "25%";
+                    // loginForm.style.marginTop = "25%";
                 }
             });
     });

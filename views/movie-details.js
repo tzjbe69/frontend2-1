@@ -3,6 +3,11 @@
 document.addEventListener("DOMContentLoaded", onHtmlLoaded);
 
 function onHtmlLoaded() {
+    const buttonLogOut = document.getElementById('logout');
+    const buttonLogIn = document.querySelector('.signin');
+    const buttonAdd = document.getElementById('addBtn');
+    const buttonDelete = document.getElementById('deleteBtn');
+    const buttonEdit = document.getElementById('editBtn');
     var movieModel = new Movie();
     movieModel.getMovieDetails()
     .then(displayMovie);
@@ -60,4 +65,9 @@ function onHtmlLoaded() {
         }
         contentEl.appendChild(movieEl);
     }
+    Utils.ready();
+    hideOrDisplay(buttonLogIn, buttonLogOut);
+    hideOrDisplay(buttonLogIn, buttonAdd);
+    hideOrDisplay(buttonLogIn, buttonEdit);
+    hideOrDisplay(buttonLogIn, buttonDelete);
 }

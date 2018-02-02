@@ -42,7 +42,7 @@ function isAuth() {
 
 // Function to show an element and display another
 
-function hideOrDisplay(userElement, adminElement) {
+function hideOrDisplay(userElement, adminElement) { // adminElement parameter is optional
     if (isAuth()) { // if authentication is passed // 
         if (adminElement === undefined) { // if adminElement parameter is not provided
             userElement.style.display = "none"; // hide userElement
@@ -80,5 +80,15 @@ function getMovieIdFromURL() {
             window.location.href = "home.html";
             //return 1;
         }
+    }
+}
+
+const Utils = {
+    ready: function() {
+        const buttonHome = document.querySelector('.homebutton');
+        const buttonAbout = document.querySelector('.about');
+        buttonHome.addEventListener('click', () => window.location.href = "home.html");
+        buttonAbout.addEventListener('click', () => window.location.href = "about.html");
+        
     }
 }
