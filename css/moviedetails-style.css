@@ -155,7 +155,6 @@ article p {
       padding: 20px;
 }
 
-<<<<<<< HEAD
 .form {
       /*column-count: 2;*/
       display: flex;
@@ -167,10 +166,10 @@ article p {
 .edit-form-title {
       width: 100%;
       padding-left: 135px;
-=======
-#movie-display::after {
+}
+
+#movie-display :: after {
       content: '';
       display: block;
       clear: both;
->>>>>>> e30b06ac654c7595dbaece8dad8086146f2141ea
 }
