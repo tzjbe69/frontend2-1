@@ -31,8 +31,8 @@ function onHtmlLoaded() {
         var movieHtml = [];
         movieHtml['title'] = '<h2>%s</h2>';
         movieHtml['poster'] = '<img src="%s"/>';
-        movieHtml['year'] = '<h4 class="inline-details"> %s | </h4>';
-        movieHtml['plot'] = '<p>Plot: %s</p>';
+        movieHtml['year'] = '<p>Year: %s </p>';
+        movieHtml['plot'] = '<p id="plot-style">Plot: %s</p>';
         movieHtml['actors'] = '<p>Cast: %s</p>';
         movieHtml['country'] = '<p>Country: %s</p>';
         movieHtml['director'] = '<p>Director: %s</p>';
@@ -47,7 +47,7 @@ function onHtmlLoaded() {
         movieHtml['type'] = '<p>Type: %s</p>';
         movieHtml['writer'] = '<p>Writer: %s</p>';
         movieHtml['imdbID'] = '<p>Imdb ID: %s</p>';
-        movieHtml['imdbRating'] = '<p>IMDB Rating: %s</p>';
+        movieHtml['imdbRating'] = '<p>IMDB Note: %s</p>';
         movieHtml['imdbVotes'] = '<p>IMDB Votes: %s</p>';
         movieHtml['totalSeasons'] = '<p>Total Seasons: %s</p>';
         movieHtml['id'] = '<p>ID: %s</p>';
@@ -58,7 +58,7 @@ function onHtmlLoaded() {
         movieHtml['awards'] = '<p>Awards: %s</p>';
         
         for (let key in movieModel) {
-            if (movieModel[key] !== undefined && movieModel[key] !== "N/A" && typeof movieModel[key] !== "function" && key !== 'id' && key !== 'response' && key !== 'ratings' && key !=='imdbID') {
+            if (movieModel[key] !== undefined && movieModel[key] !== "N/A" && typeof movieModel[key] !== "function" && key !== 'id' && key !== 'response' && key !== 'ratings' && key !=='imdbID' && key!== 'year') {
                 var value = movieHtml[key].sprintf(movieModel[key]);
                 movieEl.innerHTML += value;
             }
