@@ -75,6 +75,7 @@ button {
       width: 1100px;
       padding-top: 90px;
       min-height: 550px;
+      overflow: hidden;
 }
 
 /*about logo-image in header div*/
@@ -153,11 +154,14 @@ article  {
       content: '';
       display: block;
       clear: both;
+      font-family: Georgia, Times, sans-serif;
 }
 
 article img {
       position: absolute;
       top: 180px;
+      max-height: 445px;
+      max-width: 300px;
 }
 
 article p {

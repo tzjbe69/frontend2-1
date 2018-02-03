@@ -62,6 +62,10 @@ function onHtmlLoaded() {
                 var value = movieHtml[key].sprintf(movieModel[key]);
                 movieEl.innerHTML += value;
             }
+            
+            if (movieModel["poster"] == 'N/A') {
+            movieModel["poster"] = "../images/no-poster.jpg";
+            }
         }
         contentEl.appendChild(movieEl);
     }
