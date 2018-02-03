@@ -132,7 +132,7 @@ function displayMovies(moviesList) {
         
         anchorImageEl.setAttribute('href', url);
         // anchorImageEl.setAttribute('target', '_blank');
-        if (moviesList[i].Title == undefined) {
+        if (moviesList[i].Title == undefined || moviesList[i].Title == '') {
             moviesList[i].Title = "NO MOVIE TITLE";
         }       
         titleElement.innerHTML = moviesList[i].Title + ' (' + moviesList[i].Year + ')';
