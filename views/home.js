@@ -145,7 +145,14 @@ function displayMovies(moviesList) {
         imageElement.setAttribute('width', 183);
         imdbNoteElement.innerHTML = 'IMDB Rating: ' + moviesList[i].imdbRating + '/10' + ' ('+ moviesList[i].imdbVotes + ' votes)';
         genreElement.innerHTML = 'Genre: ' + moviesList[i].Genre;
-
+        
+        if (moviesList[i].Genre == undefined) {
+            genreElement.innerHTML = 'Genre: Information Not Available';       
+        }
+        
+        if(moviesList[i].imdbRating == undefined && moviesList[i].imdbVotes == undefined) {
+            imdbNoteElement.innerHTML =  'IMDB Rating: Information Not Available';
+        }
         
         anchorTitleEl.appendChild(titleElement);
         anchorImageEl.appendChild(imageElement);

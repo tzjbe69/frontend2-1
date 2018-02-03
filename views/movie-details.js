@@ -47,7 +47,7 @@ function onHtmlLoaded() {
         movieHtml['type'] = '<p>Type: %s</p>';
         movieHtml['writer'] = '<p>Writer: %s</p>';
         movieHtml['imdbID'] = '<p>Imdb ID: %s</p>';
-        movieHtml['imdbRating'] = '<p>IMDB Note: %s</p>';
+        movieHtml['imdbRating'] = '<p>IMDB Rating: %s</p>';
         movieHtml['imdbVotes'] = '<p>IMDB Votes: %s</p>';
         movieHtml['totalSeasons'] = '<p>Total Seasons: %s</p>';
         movieHtml['id'] = '<p>ID: %s</p>';
