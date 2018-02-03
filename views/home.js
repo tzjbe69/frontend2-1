@@ -183,7 +183,7 @@ function getMoviesAfterRating() {
         let listOfMovies = document.createElement('ol');
         for(let i = 0; i < 10; i++){
             let listItem = document.createElement('li');
-            listItem.innerHTML = "<a href=movieDetails.html?movieId=" + response[i]._id + " target='_blank'>"+response[i].Title+"</a>";
+            listItem.innerHTML = "<a href=movieDetails.html?movieId=" + response[i]._id + " >"+response[i].Title+"</a>";
             listOfMovies.appendChild(listItem);
         }
         topMovies.appendChild(listOfMovies);
