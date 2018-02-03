@@ -177,7 +177,7 @@ body {
     display: block;
 }
 .search-section input[type="text"] {
-    width: 90%;
+    width: 80%;
     border:0;
     border-radius:0;
     float:left;
@@ -201,7 +201,7 @@ body {
 
 .search-section form {
     width: 100%;
-    background-color: blue;
+    /*background-color: blue;*/
     font-size: 0;
     box-sizing: border-box;
 
