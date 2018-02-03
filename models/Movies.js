@@ -18,7 +18,7 @@ Movies.prototype.getAfterRating = function () {
     return fetch(url, {method: 'GET'})
             .then((response) => response.json())
             .then((response) => {
-                response.results.sort((a, b) => b.imdbRating - a.imdbRating);
+                response.results.sort((a, b) => Number(b).imdbRating - Number(a).imdbRating);
                 return response.results;
                 })
             .catch((err) => err);

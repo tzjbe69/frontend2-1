@@ -1,6 +1,7 @@
 
 
 body {
+    font-family: Georgia, Times, sans-serif;
     margin: 0;
     padding: 0;
     /* the background -image from html*/
@@ -33,7 +34,7 @@ body {
 }
 
 .article h3 {
-    font-family: Fantasy;
+    /*font-family: Fantasy;*/
     font-weight: bold;
 }
 .art-container {
@@ -219,8 +220,25 @@ body {
 }
 
 .top-movies ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: space-between;
     margin: 0;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 75%;
+    text-decoration: none;
+    color: #AF0909;
 }
+
+.top-movies ol li {
+    margin-left: 4%;
+}
+
+a {
+    text-decoration: none;
+    color: #AF0909;
+}
+
 #overlay {
     position: fixed;
     display: none;
@@ -352,6 +370,7 @@ ul {
 /*In case the page is taking longer time to load... here is the style and animation*/
 
 #loading > div {
+    padding: 0;
     border-radius: 100%;
     -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
     animation: sk-bouncedelay 1.4s infinite ease-in-out both;
