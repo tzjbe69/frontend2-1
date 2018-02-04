@@ -21,7 +21,6 @@ function submit() {
             metascore = document.getElementById("movie-metascore"),
             website = document.getElementById("movie-website"),
             type = document.getElementById("movie-type");
-            poster = document.getElementById("poster");
             
 
       const data = {
@@ -43,14 +42,14 @@ function submit() {
             Production: production.value,
             Metascore: metascore.value,
             Website: website.value,
-            Type: type.value,
-            Poster: type.poster
+            Type: type.value
       };
 
       const movie = new Movie();
       const token = getCookies().accessCookie;
 
       movie.editMovie(data, token);
+      document.getElementById("overlay").style.display = "none";
 }
 
 // When "Edit" button is clicked
@@ -77,8 +76,7 @@ function on() {
                   production = document.getElementById("movie-production"),
                   metascore = document.getElementById("movie-metascore"),
                   website = document.getElementById("movie-website"),
-                  type = document.getElementById("movie-type"),
-                  poster = document.getElementById("poster");
+                  type = document.getElementById("movie-type");
       
             title.value = movieModel.title;
             plot.value = movieModel.plot;
@@ -99,7 +97,6 @@ function on() {
             metascore.value = movieModel.metascore;
             website.value = movieModel.website;
             type.value = movieModel.type;
-            poster.value = movieModel.poster;
       });
 }   
 

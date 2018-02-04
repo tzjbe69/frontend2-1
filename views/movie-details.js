@@ -1,4 +1,5 @@
 /*global Movie fetch*/
+/*global off Utils hideOrDisplay */
 
 document.addEventListener("DOMContentLoaded", onHtmlLoaded);
 

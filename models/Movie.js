@@ -1,6 +1,6 @@
 /*global Movie fetch*/
 /*global getCookies*/
-
+/*global getMovieIdFromURL*/
 /*global $*/
 
 function Movie() {
@@ -74,7 +74,7 @@ Movie.prototype.getMovieDetails = function() {
             that.ratings=data.Ratings;
             that.id=data._id;
     });
-}
+};
 
 Movie.prototype.editMovie = function(data, token) {
     const root = 'https://ancient-caverns-16784.herokuapp.com/';
@@ -96,7 +96,7 @@ Movie.prototype.editMovie = function(data, token) {
             console.log(res);
         }
     });
-}
+};
 
 // Implement "Delete" movie functionality
 
@@ -123,7 +123,7 @@ Movie.prototype.deleteMovie = function() {
 			window.location.href = placeholder.join("/") + "/home.html";
 		}
 	});
-}
+};
 
 Movie.prototype.addMovie = function() {
     $.ajax({
@@ -138,4 +138,4 @@ Movie.prototype.addMovie = function() {
                 window.location.href= "home.html";
             }
         });    
-}
+};
