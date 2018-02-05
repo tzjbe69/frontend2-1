@@ -132,9 +132,27 @@ Movie.prototype.addMovie = function() {
             beforeSend: function(request) {
             request.setRequestHeader("x-auth-token", getCookies().accessCookie);
             },
-            data: {Title:this.title, Year:this.year, Poster:this.poster},
+            data: {
+                Title:this.title, 
+                Year:this.year, 
+                Poster:this.poster,
+                Runtime: this.runtime,
+                Genre: this.genre,
+                Language: this.language,
+                Country: this.country,
+                Type: this.type,
+                Production: this.production,
+                Awards: this.awards,
+                Plot: this.plot,
+                Released: this.released,
+                Rated: this.rated,
+                Director: this.director,
+                Writer: this.writer,
+                Actors: this.actors,
+            },
             success: function(res){
-                console.log(res);
+                var x = res;
+                console.log(x);
                 window.location.href= "home.html";
             }
         });    

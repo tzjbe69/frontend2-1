@@ -3,24 +3,50 @@
     <head>
         <title>Button</title>
         <link rel="stylesheet" href="addMovie.css" type="text/css" />
-        <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
-        <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     </head>
     <body>
+        <div class="header">
+            <div class ="container">
+                <div class="logo">
+                    <a href="home.html"><img src="../images/Logo2.jpg" alt="logo"/></a>
+                </div>
+                <div class="menu">
+                    <button class="homebutton">Home</button>
+                    <button class="about">About</button>
+                </div>
+            </div>
+        </div>
         <div id="form">
-            <p>Title</p>
-            <input type="text" name="title" required/>
-            <br />
-            <p>Year</p>
-            <input type="text" name="year" required/>
-            <br />
-            <p>Poster</p>
-            <input type="text" name="poster" required/>
+            <div id="inputs">
+                <div>
+                    Title: <input type="text" name="title" id="movie-title"><br>
+                    Year: <input type="text" name="year" id="movie-year"><br>
+                    Rated: <input type="text" name="rated" id="movie-rates"><br> 
+                    Released: <input type="text" name="released" id="released"><br>
+                    Runtime: <input type="text" name="runtime" id="movie-runtime"><br>
+                    Genre: <input type="text" name="genre" id="movie-genre"><br>
+                    Directors: <input type="text" name="directors" id="movie-directors"><br>
+                    Writer: <input type="text" name="writers" id="movie-writer"><br>
+                </div>
+                <div>
+                Actors: <input type="text" name="actors" id="movie-actors"><br>
+                Plot: <input type="text" name="plot" id="movie-plot"><br>
+                Language: <input type="text" name="language" id="movie-language"><br>
+                Country: <input type="text" name="country" id="movie-country"><br>
+                Awards: <input type="text" name="awards" id="movie-awards"><br>
+                Type: <input type="text" name="type" id="movie-type"><br>
+                Production: <input type="text" name="production" id="movie-production"><br>
+                Poster: <input type="text" name="poster" required/>
+                </div>
+            </div>
             <br />
             <button id="submit">Add</button>
         </div>
-        <script type="text/javascript" src="../utils/utils.js"></script>
+        <div class ="footer">
+            <p>&copy2018 Team Alpha</p>
+        </div>
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="../utils/utils.js"></script>
         <script type="text/javascript" src="../models/Movie.js"></script>
         <script type="text/javascript" src="../views/add-movie.js"></script>
     </body>
