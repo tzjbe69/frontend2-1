@@ -20,7 +20,5 @@ Search.prototype.searchMovies = function(){
   }else if(this.country !== ''){
     searchURL = "Country=" + this.country;
   }
-  console.log(searchURL);
-  //if .. others
   return searchURL;
 };
