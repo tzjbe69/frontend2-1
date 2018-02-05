@@ -22,13 +22,17 @@ window.onload = function() {
             	if(response.authenticated) {
                 	document.cookie = 'accessCookie=' + response.accessToken;
                     document.cookie = "username=" + userLogin.username;
-                    loginNotif.innerHTML = "<h4>Login Successful. Welcome " + userLogin.username + ", you will now" + 
-                    " be redirected to the Home Page.</h4>";
-                    loginNotif.style.backgroundColor = "#0f9e27";
-                	setTimeout(() => {document.location.href = "home.html"}, 3500);
+                    loginNotif.innerHTML = "<h5>Login Successful, young Padawan " + userLogin.username + ". You will now" + 
+                    " be redirected to the Home Page.</h5>";
+                    loginNotif.style.backgroundColor = "#07b001";
+                    // loginNotif.style.marginTop = "25%";
+                    // loginForm.style.marginTop = "25%";
+                	setTimeout(() => {document.location.href = "home.html"}, 3000);
             	} else {
-                    loginNotif.innerHTML = "<h4>Your username/password is incorrect.</h4>";
+                    loginNotif.innerHTML = "<h5>Your username/password is incorrect.</h5>";
                     loginNotif.style.backgroundColor = "#ba1a14";
+                    // loginNotif.style.marginTop = "25%";
+                    // loginForm.style.marginTop = "25%";
                 }
             });
     });

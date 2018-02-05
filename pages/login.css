@@ -14,25 +14,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-weight: normal;
-}
 
-.header {
-    background-color: #0B0D18;
-    box-shadow: 1px 1px 1px #D5DACF;
-    width: 100%;
-    margin-bottom: 70px;
-}
-
-.header button {
-    background-color: #AF0909;
-    border-color: #D5DACF;
-    border-style: ridge;
-    border-width: 2px;
-    border-radius: 15px;
-    color: white;
-    font-family: monospace;
-    font-size: 14px;
-    height: 35px;
 }
 
 .menu {
@@ -50,30 +32,51 @@ body {
 }
 
 .menu a {
-    padding: 0 5px;
+    padding-left: 5px;
+    padding-right: 5px;
     text-decoration: none;
+    cursor: default;
     color: #918B8B ;
+}
+
+.header {
+    background-color: #0B0D18;
+  	box-shadow: 1px 1px 1px #D5DACF;
+    width: 100%;
+    margin-bottom: 70px;
+}
+
+.header button {
+    background-color: #AF0909;
+    border-color: #D5DACF;
+    border-style: ridge;
+    border-width: 2px;
+    border-radius: 15px;
+    color: white;
+    font-family: monospace;
+    font-size: 14px;
+    height: 35px;
 }
 
 .container {
     margin: auto;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: row;
     max-width: 1100px;
+    position: relative;
 }
 
-.logo img{
+.logo img {
     width: 25%;
-    float: left;
     height: 70px;
-    margin-right: 5px;
-}
 
+}
 .logo {
     height: 70px;
     width: 80%;
-    display:inline-block;
-    margin: 15px 0;
+    display: inline-block;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .login-notification {
@@ -119,7 +122,6 @@ input {
 }
 
 button {
-    margin-top: 9px;
     cursor: pointer;
 }
 
@@ -136,14 +138,6 @@ button[type=submit] {
     border-radius: 5px;
     font-size: 14px;
     width: 100%;
-}
-
-span {
-    margin-top: 5px;
-}
-
-.about {
-    margin-right: 55px;
 }
 
 .footer {
@@ -164,6 +158,8 @@ span {
     padding-bottom: 5px;
 
 }
+
+/* responsive */
 
 @media only screen and (max-width: 400px) {
     .container {
@@ -195,3 +191,5 @@ span {
         width: 100%;
     }
 }
+
+

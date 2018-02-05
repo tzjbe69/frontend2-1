@@ -13,7 +13,6 @@ function onHtmlLoaded() {
     movieModel.getMovieDetails()
     .then(displayMovie);
 
-    buttonLogOut.addEventListener('click', logOutFunction);
     document.getElementById('cancel').addEventListener('click', off);
     function displayMovie() {
         
