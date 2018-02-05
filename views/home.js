@@ -15,7 +15,13 @@ window.onload = function() {
     buttonLogIn.addEventListener('click', () => window.location.href = "login.html");
     buttonLogOut.addEventListener('click', logOutFunction);
 
-    hideOrDisplay(registerText);
+    if(isAuth()) {
+        const cookies = getCookies();
+        const usernameCookie = cookies.username;
+        console.log(usernameCookie);
+        registerText.innerHTML = "Welcome, " + usernameCookie + "!";
+    }
+
     hideOrDisplay(buttonLogIn, buttonLogOut);
     hideOrDisplay(buttonLogIn, addBtn);
 

@@ -41,6 +41,10 @@ body {
     border-bottom: double #171a31;
 }
 
+.register-text {
+    float: right;
+}
+
 .container {
     margin: auto;
     display: flex;

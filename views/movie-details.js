@@ -13,6 +13,7 @@ function onHtmlLoaded() {
     movieModel.getMovieDetails()
     .then(displayMovie);
 
+    buttonLogIn.addEventListener('click', () => window.location.href = "login.html");
     buttonLogOut.addEventListener('click', logOutFunction);
     document.getElementById('cancel').addEventListener('click', off);
     function displayMovie() {
