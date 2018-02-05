@@ -1,5 +1,6 @@
 /*global Movie fetch*/
 /*global off Utils hideOrDisplay */
+/*global logOutFunction*/
 
 document.addEventListener("DOMContentLoaded", onHtmlLoaded);
 
