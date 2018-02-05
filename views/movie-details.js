@@ -15,6 +15,7 @@ function onHtmlLoaded() {
 
     buttonLogIn.addEventListener('click', () => window.location.href = "login.html");
     buttonLogOut.addEventListener('click', logOutFunction);
+    buttonAdd.addEventListener('click', () => window.location.href = "addMovie.html");
     document.getElementById('cancel').addEventListener('click', off);
     function displayMovie() {
         
