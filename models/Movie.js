@@ -19,7 +19,7 @@ function Movie() {
     this.country="";
     this.awards="";
     this.imdbRating="";
-    this.poster="../images/no-poster.jpg";
+    this.poster="";
     this.metascore="";
     this.imdbRating="";
     this.imdbVotes="";
