@@ -1,3 +1,6 @@
+
+Utils.ready();
+
 var addMovie = document.getElementById('submit');
 addMovie.addEventListener('click',function(){
     var title = document.getElementsByName('title')[0].value;
