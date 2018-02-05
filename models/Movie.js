@@ -35,8 +35,6 @@ function Movie() {
 Movie.prototype.getMovieDetails = function() {
     var that = this;
     var movieId = getMovieIdFromURL();
-    console.log(movieId);
-    console.log(getMovieIdFromURL);
     var root = 'https://ancient-caverns-16784.herokuapp.com/movies/';
     
     return fetch(root + movieId, {
