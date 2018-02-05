@@ -7,10 +7,10 @@ function submit() {
             year = document.getElementById("movie-year"),
             released = document.getElementById("released"),
             genre = document.getElementById("movie-genre"),
-            imdbNote = document.getElementById("imdb-note"),
+            imdbRating = document.getElementById("imdb-note"),
             imdbVotes = document.getElementById("imdb-votes"),
             rated = document.getElementById("movie-rates"),
-            directors = document.getElementById("movie-directors"),
+            director = document.getElementById("movie-directors"),
             actors = document.getElementById("movie-actors"),
             runtime = document.getElementById("movie-runtime"),
             writer = document.getElementById("movie-writer"),
@@ -30,9 +30,9 @@ function submit() {
             Released: released.value,
             Genre: genre.value,
             Rated: rated.value,
-            IMDBNote: imdbNote.value,
-            IMDBVotes: imdbVotes.value,
-            Directors: directors.value,
+            imdbRating: imdbRating.value,
+            ImdbVotes: imdbVotes.value,
+            Director: director.value,
             Writer: writer.value,
             Actors: actors.value,
             Runtime: runtime.value,
@@ -55,6 +55,7 @@ function submit() {
 // When "Edit" button is clicked
 function on() {
       document.getElementById("overlay").style.display = "block";
+      document.getElementById("overlay").style.resize = "both";
 
       const movieModel = new Movie();
       movieModel.getMovieDetails().then(() => {
@@ -64,9 +65,9 @@ function on() {
                   rated = document.getElementById("movie-rates"),
                   released = document.getElementById("released"),
                   genre = document.getElementById("movie-genre"),
-                  imdbNote = document.getElementById("imdb-note"),
+                  imdbRating = document.getElementById("imdb-note"),
                   imdbVotes = document.getElementById("imdb-votes"),
-                  directors = document.getElementById("movie-directors"),
+                  director = document.getElementById("movie-directors"),
                   writer = document.getElementById("movie-writer"),
                   actors = document.getElementById("movie-actors"),
                   runtime = document.getElementById("movie-runtime"),
@@ -84,10 +85,10 @@ function on() {
             rated.value = movieModel.rated;
             released.value = movieModel.released;
             genre.value = movieModel.genre;
-            imdbNote.value = movieModel.imdbNote;
+            imdbRating.value = movieModel.imdbRating;
             imdbVotes.value= movieModel.imdbVotes;
             runtime.value = movieModel.runtime;
-            directors.value = movieModel.directors;
+            director.value = movieModel.director;
             writer.value = movieModel.writer;
             actors.value = movieModel.actors; 
             language.value = movieModel.language; 
