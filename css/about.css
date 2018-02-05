@@ -108,9 +108,6 @@ body {
 }
 
 /* About team-css */
-h3 {
-    padding-left: 50px;
-}
 
 .team-list {
     background-color: #979797;
@@ -128,8 +125,3 @@ h3 {
 .team-list ul {
     list-style-type: decimal;
 }
-
-
-
-
-
