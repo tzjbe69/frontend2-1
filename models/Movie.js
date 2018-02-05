@@ -80,11 +80,7 @@ Movie.prototype.editMovie = function(data, token) {
     const root = 'https://ancient-caverns-16784.herokuapp.com/';
     const accessCookie = getCookies().accessCookie;
     var movieId = getMovieIdFromURL();
-    console.log(movieId);
 
-    console.log("editMovie - request url ... ", root + 'movies/' + movieId);
-   
-    
     $.ajax({
         url: root + 'movies/' + movieId,
         method: "PUT",
