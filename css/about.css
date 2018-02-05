@@ -1,5 +1,3 @@
-
-
 body {
     margin: 0;
     padding: 0;
@@ -8,7 +6,6 @@ body {
     background-size: cover;
     background-attachment: fixed;
 }
-
 
 .container {
     margin: auto;
@@ -30,13 +27,10 @@ body {
     position: fixed;
     bottom: 0;
     left: 0;
-
-    
 }
 
 .footer p {
     padding-bottom: 5px;
-
 }
 
 .header {
@@ -81,8 +75,8 @@ body {
     width: 25%;
     float: left;
     height: 70px;
-
 }
+
 .logo {
     height: 70px;
     width: 80%;
@@ -99,7 +93,6 @@ body {
     text-align: right;
     padding-top: 30px;
     font-size: 14px;
-
 }
 
 .menu span {
@@ -115,6 +108,9 @@ body {
 }
 
 /* About team-css */
+h3 {
+    padding-left: 50px;
+}
 
 .team-list {
     background-color: #979797;
